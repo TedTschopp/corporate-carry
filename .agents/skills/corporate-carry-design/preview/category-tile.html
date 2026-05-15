@@ -1,0 +1,54 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; }
+  .cat { background: var(--paper); padding: 18px 20px; display: flex; flex-direction: column; justify-content: space-between; min-height: 180px; }
+  .num { font-family: var(--font-mono); font-size: 10px; color: var(--ink-mute); letter-spacing: 0.08em; }
+  .viz { height: 48px; display: flex; align-items: flex-start; color: var(--ink-soft); margin-bottom: 6px; }
+  h3 { font-size: 22px; letter-spacing: -0.025em; line-height: 1.05; margin: 6px 0 8px; }
+  p { font-size: 12.5px; color: var(--ink-soft); margin: 0; line-height: 1.45; }
+  .foot { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; font-family: var(--font-mono); font-size: 10px; color: var(--ink-soft); letter-spacing: 0.06em; text-transform: uppercase; }
+  .arr { color: var(--accent); }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Category tile</div>
+  <div class="grid">
+    <a class="cat">
+      <div>
+        <div class="num">01 · 84 items</div>
+        <div class="viz">
+          <svg viewBox="0 0 80 64" width="100%" height="48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M16 18 v32 a4 4 0 0 0 4 4 h40 a4 4 0 0 0 4 -4 v-32"/>
+            <path d="M26 18 v-4 a6 6 0 0 1 6 -6 h16 a6 6 0 0 1 6 6 v4"/>
+            <path d="M16 28 h48"/>
+            <circle cx="40" cy="36" r="2.5"/>
+          </svg>
+        </div>
+        <h3>Backpack essentials</h3>
+        <p>The chargers, cables, pouches, and EDC tools that quietly make every workday easier.</p>
+      </div>
+      <div class="foot"><span>Browse</span><span class="arr">→</span></div>
+    </a>
+    <a class="cat">
+      <div>
+        <div class="num">02 · 62 items</div>
+        <div class="viz">
+          <svg viewBox="0 0 80 64" width="100%" height="48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="12" y="14" width="56" height="28" rx="1.5"/>
+            <path d="M38 42 v8 M30 50 h20"/>
+            <rect x="20" y="20" width="16" height="10" rx="0.5"/>
+            <path d="M44 22 h18 M44 28 h18 M44 34 h12"/>
+          </svg>
+        </div>
+        <h3>Desk &amp; office</h3>
+        <p>Docks, monitor lights, ergonomic kit — small additions that compound across a week.</p>
+      </div>
+      <div class="foot"><span>Browse</span><span class="arr">→</span></div>
+    </a>
+  </div>
+  <div class="note">Custom-drawn 80×64 line illustrations per category — same 1.4 stroke, no fill, currentColor. Hand-built per concept.</div>
+</div>
+</body></html>

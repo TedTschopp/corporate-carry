@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .v { padding: 14px; border: 1px solid var(--hairline); border-radius: 8px; background: var(--paper); }
+  .v.bad { border-color: color-mix(in srgb, #9a3412 22%, var(--hairline)); }
+  .tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .v .tag { color: #4d6e3b; }
+  .v.bad .tag { color: #9a3412; }
+  .v p { margin: 0; font-size: 13px; line-height: 1.45; color: var(--ink-2); text-wrap: pretty; }
+  .v.bad p { color: var(--ink-soft); }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Voice &amp; tone — yes / no</div>
+  <div class="col">
+    <div class="v"><div class="tag">✓ Sounds like us</div><p>These are the small tools that make corporate life less annoying.</p></div>
+    <div class="v bad"><div class="tag">✗ Doesn't</div><p>Here are 25 AMAZING gadgets you NEED right now! 🤯</p></div>
+    <div class="v"><div class="tag">✓ Sounds like us</div><p>Your backpack does not need to be full of gadgets. It needs the right few things.</p></div>
+    <div class="v bad"><div class="tag">✗ Doesn't</div><p>Discover the ultimate game-changing essentials that will revolutionize your workflow.</p></div>
+    <div class="v"><div class="tag">✓ Sounds like us</div><p>None of those items are bad. They just didn't earn space in a bag carried five days a week.</p></div>
+    <div class="v bad"><div class="tag">✗ Doesn't</div><p>This is hands-down the best product in its class. Period. End of story.</p></div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+  .lock { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: -0.015em; }
+  .mark { background: var(--ink); color: var(--bg); display: grid; place-items: center; font-family: var(--font-mono); font-weight: 600; border-radius: 2px; }
+  .lock--lg .mark { width: 56px; height: 56px; font-size: 22px; }
+  .lock--lg span { font-size: 32px; letter-spacing: -0.025em; }
+  .lock--md .mark { width: 36px; height: 36px; font-size: 15px; }
+  .lock--md span { font-size: 20px; }
+  .lock--sm .mark { width: 26px; height: 26px; font-size: 12px; }
+  .lock--sm span { font-size: 15px; }
+  .lock--inv .mark { background: var(--bg); color: var(--ink); border: 1px solid var(--hairline); }
+  .lock--accent .mark { background: var(--accent); color: #fffdf6; }
+  .mono-mark { display: grid; place-items: center; width: 56px; height: 56px; background: transparent; color: var(--ink); border: 1.5px solid var(--ink); font-family: var(--font-mono); font-weight: 600; font-size: 22px; border-radius: 2px; }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Logo &amp; lockup</div>
+  <div class="row">
+    <div class="lock lock--lg"><div class="mark">CC</div><span>Corporate Carry</span></div>
+  </div>
+  <div class="row">
+    <div class="lock lock--md"><div class="mark">CC</div><span>Corporate Carry</span></div>
+    <div class="lock lock--sm"><div class="mark">CC</div><span>Corporate Carry</span></div>
+    <div class="lock lock--md lock--accent"><div class="mark">CC</div><span>Corporate Carry</span></div>
+  </div>
+  <div class="row">
+    <div class="mono-mark">CC</div>
+    <div class="lock lock--md"><div class="mark" style="background: var(--accent); color:#fffdf6;">CC</div></div>
+    <div style="font-family: var(--font-mono); font-size: 13px; color: var(--ink-soft); letter-spacing: 0.04em;">corporatecarry.com</div>
+  </div>
+  <div class="note">Two-letter mark + wordmark. Mark is a 2px-radius near-square (almost a stamp). Outlined variant used on photography overlays.</div>
+</div>
+</body></html>

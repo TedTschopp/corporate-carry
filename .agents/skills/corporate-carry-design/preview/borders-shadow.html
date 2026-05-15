@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 18px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--hairline); }
+  .row:last-child { border-bottom: none; }
+  .lbl { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink); letter-spacing: 0.04em; }
+  .lbl .v { font-size: 10px; color: var(--ink-mute); display: block; margin-top: 2px;}
+  .demo-hl { height: 1px; background: var(--hairline); }
+  .demo-hl-2 { height: 1px; background: var(--hairline-2); }
+  .demo-dash { height: 1px; border-top: 1px dashed var(--hairline); background: transparent; }
+  .demo-solid { height: 1px; background: var(--ink); }
+  .demo-card { padding: 12px 14px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); }
+  .demo-card.hover { border-color: var(--hairline-2); box-shadow: 0 1px 2px rgba(26,22,20,0.05), 0 0 0 1px rgba(26,22,20,0.04); transform: translateY(-2px); }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Hairlines &amp; shadows</div>
+  <div class="row">
+    <div class="lbl">hairline<span class="v">#ddd2b8</span></div>
+    <div class="demo-hl"></div>
+    <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-soft);">Every 1px border in the system.</div>
+  </div>
+  <div class="row">
+    <div class="lbl">hairline-2<span class="v">#cfc29f</span></div>
+    <div class="demo-hl-2"></div>
+    <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-soft);">Hover state for card borders.</div>
+  </div>
+  <div class="row">
+    <div class="lbl">dashed<span class="v">1px dashed</span></div>
+    <div class="demo-dash"></div>
+    <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-soft);">In-card list rows (kit, pouches).</div>
+  </div>
+  <div class="row">
+    <div class="lbl">structural<span class="v">1px solid ink</span></div>
+    <div class="demo-solid"></div>
+    <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-soft);">Top &amp; bottom rules on pull quote.</div>
+  </div>
+  <div class="row" style="border-bottom:none;">
+    <div class="lbl">shadow<span class="v">on hover only</span></div>
+    <div class="demo-card hover">card · hovered</div>
+    <div class="demo-card">card · resting</div>
+  </div>
+</div>
+</body></html>

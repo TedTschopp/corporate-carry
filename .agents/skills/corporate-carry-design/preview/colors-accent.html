@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .sw { display: flex; flex-direction: column; }
+  .sw__chip { aspect-ratio: 2 / 1; border: 1px solid var(--hairline); border-radius: 6px; }
+  .sw__name { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink); margin-top: 6px; letter-spacing: 0.02em; }
+  .sw__hex { font-family: var(--font-mono); font-size: 10px; color: var(--ink-mute); }
+  .demo { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+  .demo h2 { font-size: 28px; letter-spacing: -0.025em; line-height: 1.05; margin: 0; font-weight: 600; }
+  .demo h2 em { font-style: italic; font-family: "Times New Roman", serif; color: #a16207; font-weight: 500; letter-spacing: -0.02em; }
+  .pill { padding: 4px 10px; background: #f0e6cd; color: #854d0e; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 999px; }
+  .pill--solid { background: #a16207; color: #fffdf6; }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Accent — dijon amber</div>
+  <div class="row">
+    <div class="sw"><div class="sw__chip" style="background:#a16207;"></div><div class="sw__name">accent</div><div class="sw__hex">#a16207</div></div>
+    <div class="sw"><div class="sw__chip" style="background:#854d0e;"></div><div class="sw__name">accent-2 · hover</div><div class="sw__hex">#854d0e</div></div>
+    <div class="sw"><div class="sw__chip" style="background:#f0e6cd;"></div><div class="sw__name">accent-tint</div><div class="sw__hex">#f0e6cd</div></div>
+  </div>
+  <div class="demo">
+    <h2>Tools worth <em>carrying</em>.</h2>
+  </div>
+  <div class="demo">
+    <span class="pill pill--solid">★ Top pick</span>
+    <span class="pill">Feature</span>
+    <span style="font-family: var(--font-mono); font-size: 12px; color: #854d0e;">9.4 / 10</span>
+  </div>
+  <div class="note">Used sparingly — italic-serif emphasis word, "Top pick" tags, scores, hover states. No gradient ramps.</div>
+</div>
+</body></html>

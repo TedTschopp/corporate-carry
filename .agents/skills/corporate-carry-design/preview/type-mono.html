@@ -1,0 +1,31 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: flex; flex-direction: column; gap: 14px; }
+  .item { display: grid; grid-template-columns: 110px 1fr; gap: 14px; align-items: baseline; padding-bottom: 12px; border-bottom: 1px dashed var(--hairline); }
+  .item:last-child { border-bottom: none; }
+  .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--ink-mute); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.4; }
+  .lbl .n { color: var(--ink); display: block; font-weight: 500; margin-bottom: 2px;}
+  .kicker { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
+  .kicker .acc { color: var(--accent); }
+  .mono { font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); letter-spacing: 0.04em; }
+  .price { font-family: var(--font-mono); font-size: 13px; color: var(--ink); font-weight: 500; }
+  .price s { color: var(--ink-mute); margin-right: 6px; font-weight: 400; }
+  .crumb { display: flex; gap: 8px; align-items: center; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+  .crumb .sep { color: var(--hairline-2); }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Mono — labels &amp; metadata</div>
+  <div class="row">
+    <div class="item"><div class="lbl"><span class="n">Kicker</span>11 · .12em · UC</div><div class="kicker"><span class="acc">§ 02</span> · Latest roundups</div></div>
+    <div class="item"><div class="lbl"><span class="n">Breadcrumb</span>11 · .10em · UC</div><div class="crumb"><span>Corporate Carry</span><span class="sep">/</span><span>Backpack</span><span class="sep">/</span><span style="color:var(--ink);">Feature</span></div></div>
+    <div class="item"><div class="lbl"><span class="n">Card meta</span>11 · .06em</div><div class="mono">EDITED MAY 02 · 14 ITEMS · 6.8 KG</div></div>
+    <div class="item"><div class="lbl"><span class="n">Price</span>13 · 500 weight</div><div class="price"><s>$399</s>$329</div></div>
+    <div class="item"><div class="lbl"><span class="n">Spec value</span>13 · tabular</div><div class="price">2.41 kg</div></div>
+  </div>
+  <div class="note">Mono is reserved for things measurable and label-like — never used for body text or running prose.</div>
+</div>
+</body></html>

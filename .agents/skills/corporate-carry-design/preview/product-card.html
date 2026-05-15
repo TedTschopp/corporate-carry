@@ -1,0 +1,58 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .product { background: var(--paper); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .ph { aspect-ratio: 1; background-color: var(--bg-soft); background-image: repeating-linear-gradient(135deg, transparent 0 11px, rgba(26,22,20,0.06) 11px 12px); display: grid; place-items: center; position: relative; }
+  .ph__lbl { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); padding: 3px 6px; background: var(--bg); border: 1px solid var(--hairline); border-radius: 2px; }
+  .idx { position: absolute; top: 8px; left: 8px; font-family: var(--font-mono); font-size: 10px; background: var(--bg); border: 1px solid var(--hairline); padding: 2px 6px; border-radius: 2px; color: var(--ink-soft); letter-spacing: 0.06em; }
+  .pick { position: absolute; top: 8px; right: 8px; font-family: var(--font-mono); font-size: 9px; background: var(--accent); color: #fffdf6; padding: 3px 7px; border-radius: 2px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+  .cat { font-family: var(--font-mono); font-size: 10px; color: var(--ink-soft); letter-spacing: 0.08em; text-transform: uppercase; }
+  .name { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; }
+  .blurb { font-size: 12px; color: var(--ink-soft); line-height: 1.45; flex: 1; }
+  .foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--hairline); padding-top: 10px; }
+  .price { font-family: var(--font-mono); font-size: 12px; font-weight: 500; }
+  .shop { display: flex; gap: 4px; align-items: center; font-family: var(--font-mono); font-size: 10px; color: var(--ink-soft); }
+  .shop .sep { color: var(--ink-mute); }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Product card</div>
+  <div class="grid">
+    <article class="product">
+      <div class="ph">
+        <span class="idx">01</span>
+        <span class="pick">Top pick</span>
+        <span class="ph__lbl">product · charger</span>
+      </div>
+      <div class="body">
+        <span class="cat">Power · 65W</span>
+        <div class="name">Anker 735 Nano II Charger</div>
+        <div class="blurb">The "I forgot mine" problem solved by something the size of a stack of business cards.</div>
+        <div class="foot">
+          <span class="price">$55</span>
+          <span class="shop"><span>Amazon</span><span class="sep">·</span><span>Anker</span></span>
+        </div>
+      </div>
+    </article>
+    <article class="product">
+      <div class="ph">
+        <span class="idx">03</span>
+        <span class="ph__lbl">product · headphones</span>
+      </div>
+      <div class="body">
+        <span class="cat">Audio · ANC</span>
+        <div class="name">Sony WH-1000XM5</div>
+        <div class="blurb">The "open office is loud" answer that doubles as a flight headphone.</div>
+        <div class="foot">
+          <span class="price"><span style="color:var(--ink-mute); text-decoration: line-through; margin-right: 4px;">$399</span>$329</span>
+          <span class="shop"><span>Sony</span><span class="sep">·</span><span>B&amp;H</span></span>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+</body></html>

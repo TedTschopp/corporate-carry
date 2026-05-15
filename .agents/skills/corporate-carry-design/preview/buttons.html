@@ -1,0 +1,43 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 999px; border: 1px solid var(--ink); background: var(--ink); color: var(--bg); font: 500 14px/1 "Geist"; }
+  .btn--ghost { background: transparent; color: var(--ink); border-color: var(--hairline); }
+  .btn--accent { background: var(--accent); border-color: var(--accent); color: #fffdf6; }
+  .btn--sm { padding: 7px 13px; font-size: 13px; }
+  .i { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .iconbtn { width: 36px; height: 36px; border-radius: 999px; border: 1px solid var(--hairline); background: transparent; display: grid; place-items: center; color: var(--ink-2); }
+  .lbl { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 4px; }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Buttons &amp; icon buttons</div>
+  <div>
+    <div class="lbl">Primary · sentence case</div>
+    <div class="row">
+      <button class="btn">Browse the carry <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <button class="btn btn--accent">Subscribe</button>
+      <button class="btn btn--ghost">This week's picks</button>
+    </div>
+  </div>
+  <div>
+    <div class="lbl">Small</div>
+    <div class="row">
+      <button class="btn btn--sm">View →</button>
+      <button class="btn btn--sm btn--ghost">Skip</button>
+      <button class="btn btn--sm btn--accent">Get the kit</button>
+    </div>
+  </div>
+  <div>
+    <div class="lbl">Utility · icon-only</div>
+    <div class="row">
+      <button class="iconbtn"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <button class="iconbtn"><svg class="i" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      <button class="iconbtn"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+    </div>
+  </div>
+</div>
+</body></html>

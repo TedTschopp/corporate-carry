@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .ph { position: relative; border: 1px solid var(--hairline); border-radius: 8px; background-color: var(--bg-soft); background-image: repeating-linear-gradient(135deg, transparent 0 11px, rgba(26,22,20,0.06) 11px 12px); display: grid; place-items: center; overflow: hidden; }
+  .ph__label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); padding: 4px 8px; background: var(--bg); border: 1px solid var(--hairline); border-radius: 2px; }
+  .ph--dark { background-color: #1f1a14; background-image: repeating-linear-gradient(135deg, transparent 0 11px, rgba(255,255,255,0.06) 11px 12px); border-color: #2a2218; }
+  .ph--dark .ph__label { background: #1a1614; color: #c8bda3; border-color: #2a2218; }
+  .ph--accent { background-color: var(--accent-tint); background-image: repeating-linear-gradient(135deg, transparent 0 11px, rgba(161,98,7,0.18) 11px 12px); border-color: color-mix(in srgb, var(--accent) 25%, transparent); }
+  .grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 12px; }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Striped placeholders</div>
+  <div class="grid">
+    <div class="ph" style="aspect-ratio: 4/3;"><div class="ph__label">editorial · hero shot</div></div>
+    <div class="ph ph--accent" style="aspect-ratio: 1/1;"><div class="ph__label">product · carry of the week</div></div>
+    <div class="ph ph--dark" style="aspect-ratio: 1/1;"><div class="ph__label">flat-lay · bag</div></div>
+  </div>
+  <div class="note">135° stripes, 11px / 12px spacing, 6% ink. Mono uppercase label in a hairline-bordered cream chip tells you what should go there.</div>
+</div>
+</body></html>

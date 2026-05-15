@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .lbl { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 6px; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: var(--bg-soft); color: var(--ink-soft); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; border: 1px solid transparent; }
+  .chip--accent { background: var(--accent-tint); color: var(--accent-2); }
+  .chip--outline { background: transparent; border-color: var(--hairline); }
+  .chip--ink { background: var(--ink); color: var(--bg); }
+  .dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+  .stamp { font-family: var(--font-mono); font-size: 10px; background: var(--accent); color: #fffdf6; padding: 4px 8px; border-radius: 2px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+  .stamp--ink { background: var(--ink); }
+  .badge { font-family: var(--font-mono); font-size: 11px; background: var(--bg); border: 1px solid var(--hairline); padding: 3px 7px; border-radius: 2px; color: var(--ink-soft); letter-spacing: 0.06em; }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Chips, stamps &amp; badges</div>
+  <div>
+    <div class="lbl">Soft chips · category metadata</div>
+    <div class="row">
+      <span class="chip"><span class="dot"></span> Feature</span>
+      <span class="chip chip--accent"><span class="dot"></span> Top pick</span>
+      <span class="chip chip--outline">Senior PM · 4 yrs hybrid</span>
+      <span class="chip chip--ink">14 cities</span>
+    </div>
+  </div>
+  <div>
+    <div class="lbl">Stamps · "Top pick" / tier headers</div>
+    <div class="row">
+      <span class="stamp">★ Top pick</span>
+      <span class="stamp--ink stamp">Tier 1</span>
+      <span class="stamp" style="background: var(--accent-2);">Editor's choice</span>
+    </div>
+  </div>
+  <div>
+    <div class="lbl">Badge · index numbers on product cards</div>
+    <div class="row">
+      <span class="badge">01</span>
+      <span class="badge">02</span>
+      <span class="badge">07</span>
+    </div>
+  </div>
+</div>
+</body></html>

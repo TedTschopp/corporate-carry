@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .side { border: 1px solid var(--hairline); border-radius: 12px; background: var(--paper); padding: 20px; }
+  .side h4 { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 10px; font-weight: 500; }
+  .side h3 { font-size: 16px; letter-spacing: -0.015em; line-height: 1.2; margin: 0 0 14px; }
+  ul { padding: 0; margin: 0; list-style: none; }
+  li { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--hairline); }
+  li:last-child { border-bottom: none; }
+  .thumb { width: 38px; height: 38px; border-radius: 6px; background-color: var(--bg-soft); background-image: repeating-linear-gradient(135deg, transparent 0 6px, rgba(26,22,20,0.06) 6px 7px); border: 1px solid var(--hairline); }
+  .info { flex: 1; min-width: 0; }
+  .n { font-size: 12.5px; font-weight: 500; color: var(--ink); line-height: 1.25; }
+  .p { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-soft); letter-spacing: 0.04em; }
+  .a { font-family: var(--font-mono); font-size: 10.5px; color: var(--accent); }
+  .total { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--hairline); display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+  .total .v { color: var(--ink); font-weight: 500; }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Sticky kit sidebar</div>
+  <aside class="side">
+    <h4>The kit · 7 items</h4>
+    <h3>Final loadout, week 36</h3>
+    <ul>
+      <li><div class="thumb"></div><div class="info"><div class="n">Anker 735 Nano II</div><div class="p">65W · 95 g</div></div><span class="a">$55</span></li>
+      <li><div class="thumb"></div><div class="info"><div class="n">Nimble PowerKnit Cable</div><div class="p">USB-C · 1m · 42 g</div></div><span class="a">$28</span></li>
+      <li><div class="thumb"></div><div class="info"><div class="n">Sony WH-1000XM5</div><div class="p">ANC · 250 g</div></div><span class="a">$329</span></li>
+      <li><div class="thumb"></div><div class="info"><div class="n">Leuchtturm A5</div><div class="p">Dot grid · 250 g</div></div><span class="a">$26</span></li>
+    </ul>
+    <div class="total"><span>Total contents</span><span class="v">~ 3.4 kg</span></div>
+  </aside>
+</div>
+</body></html>

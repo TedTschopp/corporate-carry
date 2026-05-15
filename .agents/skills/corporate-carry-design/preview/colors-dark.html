@@ -1,0 +1,31 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #1c1714; color: #f3eee5; }
+  .eyebrow { color: #8a8275; }
+  .eyebrow::after { background: #3b3027; }
+  .swatch-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .sw { display: flex; flex-direction: column; }
+  .sw__chip { aspect-ratio: 1.6 / 1; border: 1px solid #3b3027; border-radius: 4px; }
+  .sw__name { font-family: "Geist Mono", monospace; font-size: 10.5px; color: #f3eee5; margin-top: 6px; }
+  .sw__hex { font-family: "Geist Mono", monospace; font-size: 10px; color: #8a8275; }
+  .note { color: #8a8275; }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num" style="color:#a16207;">§</span> Dark mode surfaces</div>
+  <div class="swatch-grid">
+    <div class="sw"><div class="sw__chip" style="background:#1c1714;"></div><div class="sw__name">bg</div><div class="sw__hex">#1c1714</div></div>
+    <div class="sw"><div class="sw__chip" style="background:#2a221c;"></div><div class="sw__name">bg-soft</div><div class="sw__hex">#2a221c</div></div>
+    <div class="sw"><div class="sw__chip" style="background:#241d18;"></div><div class="sw__name">surface</div><div class="sw__hex">#241d18</div></div>
+    <div class="sw"><div class="sw__chip" style="background:#2f2620;"></div><div class="sw__name">paper</div><div class="sw__hex">#2f2620</div></div>
+    <div class="sw"><div class="sw__chip" style="background:#f3eee5;"></div><div class="sw__name">ink</div><div class="sw__hex">#f3eee5</div></div>
+    <div class="sw"><div class="sw__chip" style="background:#dccfba;"></div><div class="sw__name">ink-2</div><div class="sw__hex">#dccfba</div></div>
+    <div class="sw"><div class="sw__chip" style="background:#a09080;"></div><div class="sw__name">ink-soft</div><div class="sw__hex">#a09080</div></div>
+    <div class="sw"><div class="sw__chip" style="background:#3b3027;"></div><div class="sw__name">hairline</div><div class="sw__hex">#3b3027</div></div>
+  </div>
+  <div class="note">Toggled via the in-page Tweaks panel. Accent stays #a16207 in both modes.</div>
+</div>
+</body></html>

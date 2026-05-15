@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The hybrid worker's backpack setup, tested across 14 cities — Corporate Carry</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Article-specific */
+  .art-head {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .art-head .breadcrumb {
+    display: flex; gap: 8px; align-items: center;
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-soft); margin-bottom: 32px;
+  }
+  .art-head .breadcrumb a:hover { color: var(--accent); }
+  .art-head .breadcrumb .sep { color: var(--hairline-2); }
+  .art-head h1 {
+    font-size: clamp(40px, 5.4vw, 80px);
+    line-height: 0.98; letter-spacing: -0.035em;
+    max-width: 22ch;
+    margin-bottom: 24px;
+  }
+  .art-head h1 .em { font-style: italic; color: var(--accent); font-family: "Times New Roman", serif; font-weight: 500; }
+  .art-head .deck {
+    font-size: 20px; line-height: 1.4; color: var(--ink-2);
+    max-width: 64ch; margin-bottom: 32px; text-wrap: pretty;
+  }
+  .art-head .meta-row {
+    display: flex; align-items: center; gap: 24px;
+    padding-top: 24px; border-top: 1px solid var(--hairline);
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .art-head .byline { display: flex; align-items: center; gap: 10px; color: var(--ink); text-transform: none; letter-spacing: 0; font-family: var(--font-sans); font-size: 14px; }
+  .art-head .byline .avatar { width: 32px; height: 32px; font-size: 11px; }
+  .art-head .meta-row .sep { color: var(--hairline-2); }
+
+  /* Hero image */
+  .art-hero-image {
+    margin: 0 auto;
+    max-width: var(--maxw);
+    padding: 0 32px;
+  }
+  .art-hero-image .ph {
+    aspect-ratio: 16/9;
+    width: 100%;
+    border-radius: var(--radius-lg);
+  }
+  .art-hero-image figcaption {
+    font-family: var(--font-mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-mute); margin-top: 12px;
+    display: flex; justify-content: space-between;
+  }
+
+  /* Body layout */
+  .art-body {
+    padding: 64px 0;
+    display: grid; grid-template-columns: 1fr 760px 1fr; gap: 0;
+  }
+  .art-body__main { grid-column: 2; }
+  .art-body__main > * + * { margin-top: 22px; }
+
+  .art-body__main p {
+    font-size: 18px; line-height: 1.65; color: var(--ink-2);
+    text-wrap: pretty;
+  }
+  .art-body__main p.lede {
+    font-size: 22px; line-height: 1.45; color: var(--ink);
+    letter-spacing: -0.012em;
+    font-weight: 500;
+  }
+  .art-body__main p.lede::first-letter {
+    initial-letter: 3 2;
+    -webkit-initial-letter: 3 2;
+    font-family: "Times New Roman", serif;
+    font-weight: 500; color: var(--accent);
+    margin-right: 10px; font-style: italic;
+  }
+  .art-body__main h2 {
+    font-size: 32px; letter-spacing: -0.025em;
+    margin-top: 56px !important; margin-bottom: 12px !important;
+    line-height: 1.1;
+  }
+  .art-body__main h2 .sec {
+    font-family: var(--font-mono); font-size: 13px; color: var(--accent);
+    letter-spacing: 0.06em; margin-right: 8px; font-weight: 500;
+  }
+  .art-body__main h3 { font-size: 22px; letter-spacing: -0.015em; margin-top: 36px !important; }
+  .art-body__main a { color: var(--accent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); }
+  .art-body__main a:hover { border-color: var(--accent); }
+
+  /* Pull quote */
+  .pull {
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 32px 0;
+    margin: 48px 0 !important;
+  }
+  .pull blockquote {
+    margin: 0;
+    font-size: 32px; line-height: 1.15; letter-spacing: -0.025em;
+    color: var(--ink); font-weight: 500;
+    font-family: "Times New Roman", serif; font-style: italic;
+    text-wrap: balance;
+  }
+  .pull cite {
+    display: block; margin-top: 16px;
+    font-family: var(--font-mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-soft); font-style: normal;
+  }
+
+  /* Inline product callout */
+  .inline-product {
+    display: grid; grid-template-columns: 200px 1fr; gap: 24px;
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    margin: 32px 0 !important;
+    position: relative;
+  }
+  .inline-product .tag {
+    position: absolute; top: -10px; left: 18px;
+    background: var(--bg); padding: 0 8px;
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .inline-product .ph { aspect-ratio: 1; border-radius: var(--radius); }
+  .inline-product .body { display: flex; flex-direction: column; gap: 8px; }
+  .inline-product .cat { font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.08em; }
+  .inline-product h4 { font-size: 22px; letter-spacing: -0.018em; line-height: 1.2; }
+  .inline-product .blurb { font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; flex: 1; }
+  .inline-product .foot {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--hairline); padding-top: 12px;
+  }
+  .inline-product .price { font-family: var(--font-mono); font-size: 14px; font-weight: 500; }
+  .inline-product .shop a {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em;
+    color: var(--ink-soft); padding: 4px 8px;
+  }
+  .inline-product .shop a:hover { color: var(--accent); background: var(--accent-tint); }
+  .inline-product .shop .sep { color: var(--ink-mute); }
+
+  /* Box list */
+  .box {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    margin: 36px 0 !important;
+  }
+  .box h4 {
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 16px;
+  }
+  .box ul { padding: 0; margin: 0; list-style: none; }
+  .box ul li {
+    display: flex; gap: 14px; padding: 10px 0;
+    border-bottom: 1px dashed var(--hairline);
+    font-size: 15.5px; line-height: 1.45;
+  }
+  .box ul li:last-child { border-bottom: none; }
+  .box ul li .n {
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.06em; color: var(--ink-mute);
+    min-width: 28px; padding-top: 2px;
+  }
+  .box ul li .what { color: var(--ink); font-weight: 500; }
+  .box ul li .why { color: var(--ink-soft); display: block; font-size: 13.5px; margin-top: 2px; }
+
+  /* Sidebar (sticky kit) */
+  .with-side {
+    display: grid; grid-template-columns: 760px 320px;
+    gap: 64px; max-width: calc(760px + 320px + 64px);
+    margin: 0 auto; padding: 64px 32px;
+  }
+  .side {
+    position: sticky; top: 88px; align-self: start;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    background: var(--paper);
+    padding: 24px;
+  }
+  .side h4 {
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-soft); margin-bottom: 14px;
+  }
+  .side h3 { font-size: 18px; letter-spacing: -0.015em; line-height: 1.2; margin-bottom: 16px; }
+  .side ul { padding: 0; margin: 0; list-style: none; }
+  .side li {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .side li:last-child { border-bottom: none; }
+  .side .thumb {
+    width: 44px; height: 44px; flex: 0 0 44px;
+    border-radius: 6px;
+    background-color: var(--bg-soft);
+    background-image: repeating-linear-gradient(135deg, transparent 0 6px, rgba(26,22,20,0.06) 6px 7px);
+    border: 1px solid var(--hairline);
+  }
+  .side .info { flex: 1; min-width: 0; }
+  .side .info .n { font-size: 13.5px; font-weight: 500; color: var(--ink); line-height: 1.25; }
+  .side .info .p { font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); letter-spacing: 0.04em; }
+  .side .info .a { font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-decoration: none; }
+
+  /* Stat callout (between sections) */
+  .stat-band {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--paper);
+    margin: 36px 0 !important;
+  }
+  .stat-band .item {
+    padding: 22px 24px;
+    border-right: 1px solid var(--hairline);
+  }
+  .stat-band .item:last-child { border-right: none; }
+  .stat-band .item .n { font-size: 36px; letter-spacing: -0.025em; font-weight: 600; line-height: 1; color: var(--ink); margin-bottom: 6px; }
+  .stat-band .item .n .u { font-size: 16px; color: var(--ink-soft); font-weight: 500; margin-left: 2px; }
+  .stat-band .item .l { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+
+  /* Related articles */
+  .rel-articles {
+    border-top: 1px solid var(--hairline);
+    padding: 64px 0;
+  }
+  .rel-articles .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  }
+
+  @media (max-width: 1100px) {
+    .with-side { grid-template-columns: 1fr; gap: 32px; max-width: 760px; }
+    .side { position: static; }
+  }
+  @media (max-width: 760px) {
+    .art-body { grid-template-columns: 1fr; padding-left: 24px; padding-right: 24px; }
+    .art-body__main { grid-column: 1; }
+    .stat-band { grid-template-columns: 1fr 1fr; }
+    .stat-band .item:nth-child(2) { border-right: none; }
+    .stat-band .item { border-bottom: 1px solid var(--hairline); }
+    .stat-band .item:nth-last-child(-n+2) { border-bottom: none; }
+    .rel-articles .grid { grid-template-columns: 1fr; }
+    .inline-product { grid-template-columns: 1fr; }
+    .inline-product .ph { aspect-ratio: 4/3; }
+    .site-footer .top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body data-screen-label="03 Article">
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap bar">
+    <div class="logo">
+      <div class="logo-mark">CC</div>
+      <span>Corporate Carry</span>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="category.html">Backpack</a>
+      <a href="#">Desk</a>
+      <a href="#">Travel</a>
+      <a href="#">Meetings</a>
+      <a href="#">Gift Guides</a>
+    </nav>
+    <div class="utility">
+      <button class="iconbtn" aria-label="Search">
+        <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <a href="index.html#sub" class="btn btn--sm btn--ghost" style="border-color:var(--hairline)">Subscribe</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ARTICLE HEAD ============ -->
+<section class="art-head">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Corporate Carry</a>
+      <span class="sep">/</span>
+      <a href="category.html">Backpack essentials</a>
+      <span class="sep">/</span>
+      <span style="color:var(--ink);">Feature</span>
+    </div>
+    <span class="kicker kicker--accent" style="margin-bottom:16px; display:inline-block;">§ Feature · Long read · 12 min</span>
+    <h1>The hybrid worker's backpack setup, tested across <span class="em">14 cities.</span></h1>
+    <p class="deck">What nine months of train rides, client offices, hotel desks, and one regrettable layover taught us about the bag that actually earns its straps — and the seven things inside it that earn theirs.</p>
+    <div class="meta-row">
+      <div class="byline">
+        <div class="avatar">MR</div>
+        <div>By <strong style="color:var(--ink); font-weight:500;">Maya Reyes</strong> · Senior editor</div>
+      </div>
+      <span class="sep">/</span>
+      <span>Published May 12, 2026</span>
+      <span class="sep">/</span>
+      <span>Updated May 14</span>
+      <span class="sep">/</span>
+      <span>14 cities</span>
+      <span class="sep">/</span>
+      <span>278 days of testing</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HERO IMAGE ============ -->
+<figure class="art-hero-image" style="margin-top: 32px;">
+  <div class="ph"><div class="ph__label">editorial · full bag, flat lay, top-down</div></div>
+  <figcaption>
+    <span>Pictured: the working kit at the end of week 36.</span>
+    <span>Photograph · placeholder</span>
+  </figcaption>
+</figure>
+
+<!-- ============ ARTICLE BODY ============ -->
+<article class="art-body">
+  <div class="art-body__main">
+    <p class="lede">Most backpack articles are written by people who don't carry a backpack to work. This one was assembled the slow way — by carrying the same bag through nine months of two-day weeks at the office, train mornings, hotel desks, four client cities, and one truly grim airport in central Europe.</p>
+
+    <p>What you carry to work is not, in the end, about the bag. The bag is the container. The carry is the system inside it — the chargers you trust, the pouch you stop thinking about, the notebook you actually reach for when someone asks for a number in a meeting. By the time a setup is right, you stop noticing it. That's the whole goal of this article: a kit you stop noticing.</p>
+
+    <p>To get there, we ran an embarrassingly literal version of the test. One bag, one editor, two days a week in a corporate office, one to two days a week on the road, the rest at home. We weighed every item in grams. We tracked which items were used at least once a week (kept), once a month (under review), and once a quarter (removed). We did this for 278 days. The kit below is what survived.</p>
+
+    <div class="stat-band">
+      <div class="item">
+        <div class="n">14<span class="u">cities</span></div>
+        <div class="l">Tested in</div>
+      </div>
+      <div class="item">
+        <div class="n">278<span class="u">days</span></div>
+        <div class="l">Duration</div>
+      </div>
+      <div class="item">
+        <div class="n">7<span class="u">items</span></div>
+        <div class="l">Final kit</div>
+      </div>
+      <div class="item">
+        <div class="n">4.1<span class="u">kg</span></div>
+        <div class="l">Loaded weight</div>
+      </div>
+    </div>
+
+    <h2><span class="sec">01</span>The bag itself</h2>
+    <p>The single most common mistake in hybrid backpacks is buying the laptop bag for the worst day. Most people buy something rated for a four-day client trip and then carry it half-empty to the office every Tuesday. The result is back pain, a bag that hangs like a sail in a meeting room, and an unloved zipper that fails six months in. Buy for your <em>average</em> day. Your worst day is a duffel.</p>
+
+    <article class="inline-product">
+      <span class="tag">★ Editor's choice</span>
+      <div class="ph"><div class="ph__label">product · backpack</div></div>
+      <div class="body">
+        <span class="cat">Backpack · 14 L · 720 g</span>
+        <h4>Bellroy Tokyo Totepack Compact</h4>
+        <p class="blurb">Two-zip access. Carries as a tote when the office wants tote energy. Compresses flat under a hotel desk. The handles are reinforced enough that you can hand it to the front desk without flinching.</p>
+        <div class="foot">
+          <span class="price">$199</span>
+          <span class="shop">
+            <a href="#">Bellroy</a><span class="sep">·</span>
+            <a href="#">Huckberry</a>
+          </span>
+        </div>
+      </div>
+    </article>
+
+    <p>If your commute involves a train and the occasional rain, this is the bag. If your week involves more than one flight, size up. We tested the Tom Bihn Synik 22 as the heavy-week alternative, and Ben — who flies more than the rest of the team combined — uses it daily. For most hybrid roles, though, 14 liters is the right number.</p>
+
+    <h2><span class="sec">02</span>Power, in three pieces</h2>
+    <p>The single biggest weight you can lose from a corporate carry is the cable graveyard. Most people travel with three chargers, four cables, and a power bank that's older than their last performance review. You can replace all of it with three items that fit in a single small pouch. The result, for me, was a kit that went from a 540-gram tangle to a 218-gram block I no longer think about.</p>
+
+    <article class="inline-product">
+      <span class="tag">★ Top pick</span>
+      <div class="ph"><div class="ph__label">product · charger</div></div>
+      <div class="body">
+        <span class="cat">Power · GaN · 65W</span>
+        <h4>Anker 735 Nano II Charger</h4>
+        <p class="blurb">Charges a 14" laptop, a phone, and earbuds at once, and is the size of two business cards stacked. The "I left my charger at home" problem solved by something you can keep in a coat pocket.</p>
+        <div class="foot">
+          <span class="price">$55</span>
+          <span class="shop">
+            <a href="#">Amazon</a><span class="sep">·</span>
+            <a href="#">Anker</a>
+          </span>
+        </div>
+      </div>
+    </article>
+
+    <div class="pull">
+      <blockquote>"The right backpack carry is the one you stop noticing — the kit you'd grab without thinking on the worst Monday morning of the quarter."</blockquote>
+      <cite>— Maya Reyes, senior editor</cite>
+    </div>
+
+    <h2><span class="sec">03</span>Organization beats capacity</h2>
+    <p>The reason most office carries become a mess is not too few compartments — it's too many. A bag with twelve internal pockets is a bag where everything ends up at the bottom anyway, because the cognitive cost of remembering which pocket holds the SD reader is higher than the cost of just dumping it all in the main compartment.</p>
+
+    <p>The fix is pouches. One pouch for cables and chargers. One pouch for the daily-carry items you reach for in a meeting (pen, notebook, mints, tissues). One sleeve for the laptop. That's three discrete units to think about, not twelve. You stop hunting.</p>
+
+    <div class="box">
+      <h4>The pouch system — what goes where</h4>
+      <ul>
+        <li>
+          <span class="n">P1</span>
+          <span>
+            <span class="what">Tech pouch (Bellroy Classic)</span>
+            <span class="why">Charger, two cables, hub, power bank, AirTag spare. Lives in the bottom compartment.</span>
+          </span>
+        </li>
+        <li>
+          <span class="n">P2</span>
+          <span>
+            <span class="what">Meeting pouch (Muji slim)</span>
+            <span class="why">Pen, mechanical pencil, notebook, post-its, micro-Tide. Lives in the top zip.</span>
+          </span>
+        </li>
+        <li>
+          <span class="n">P3</span>
+          <span>
+            <span class="what">Laptop sleeve (built-in)</span>
+            <span class="why">14" MacBook only. No cables, no notebooks, no surprises.</span>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <h2><span class="sec">04</span>The seven that survived</h2>
+    <p>After 278 days, the kit settled on seven items used at least once in every working week. The full breakdown lives in the sidebar, but the short version: a charger, a cable, a hub, headphones, a notebook, a pen, and an AirTag. Everything else came and went.</p>
+
+    <p>If you do nothing else, get the first four right. The notebook and pen are taste; the AirTag is insurance. The first four are the day.</p>
+
+    <h2><span class="sec">05</span>What we removed</h2>
+    <p>The slow, undramatic story of this experiment is the list of things that got returned to the drawer. A portable monitor (cool, never used). A travel keyboard (used twice). A second power bank (one was always enough). A presentation clicker (the laptop's keyboard works fine). A label maker (loved it for three weeks, never opened it again). A second pen (one is enough; please carry one and not three).</p>
+
+    <p>The full <a href="#">tested-and-rejected</a> list is on the methodology page. None of those items are <em>bad</em>. They just didn't earn space in a bag carried five days a week. That's the only test that matters.</p>
+  </div>
+</article>
+
+<!-- ============ WITH SIDEBAR ============ -->
+<section class="with-side">
+  <div>
+    <h2 style="font-size: 32px; letter-spacing: -0.025em; margin-bottom: 16px;"><span style="font-family: var(--font-mono); font-size: 13px; color: var(--accent); letter-spacing: 0.06em; margin-right: 8px; font-weight: 500;">06</span>The full final kit</h2>
+    <p style="font-size: 17px; line-height: 1.6; color: var(--ink-2); margin-bottom: 24px;">Right column shows the kit weighed at the end of week 36. Total weight, including the empty bag: 4.1 kg. If yours is heavier than that, the question to ask is not "what should I add" but "what could I remove and barely notice."</p>
+    <p style="font-size: 17px; line-height: 1.6; color: var(--ink-2);">Reader submissions and discussion of this article — and your own kit — are welcome at <a href="#" style="color:var(--accent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);">carry@corporatecarry.com</a>. Selected reader carries are featured every other Friday.</p>
+  </div>
+  <aside class="side">
+    <h4>The kit · 7 items</h4>
+    <h3>Final loadout, week 36</h3>
+    <ul>
+      <li>
+        <div class="thumb"></div>
+        <div class="info">
+          <div class="n">Anker 735 Nano II</div>
+          <div class="p">65W · 95 g</div>
+        </div>
+        <a class="a" href="#">$55</a>
+      </li>
+      <li>
+        <div class="thumb"></div>
+        <div class="info">
+          <div class="n">Nimble PowerKnit Cable</div>
+          <div class="p">USB-C · 1m · 42 g</div>
+        </div>
+        <a class="a" href="#">$28</a>
+      </li>
+      <li>
+        <div class="thumb"></div>
+        <div class="info">
+          <div class="n">Anker 555 USB-C Hub</div>
+          <div class="p">7-in-1 · 88 g</div>
+        </div>
+        <a class="a" href="#">$69</a>
+      </li>
+      <li>
+        <div class="thumb"></div>
+        <div class="info">
+          <div class="n">Sony WH-1000XM5</div>
+          <div class="p">ANC · 250 g</div>
+        </div>
+        <a class="a" href="#">$329</a>
+      </li>
+      <li>
+        <div class="thumb"></div>
+        <div class="info">
+          <div class="n">Leuchtturm A5 Hardcover</div>
+          <div class="p">Dot grid · 250 g</div>
+        </div>
+        <a class="a" href="#">$26</a>
+      </li>
+      <li>
+        <div class="thumb"></div>
+        <div class="info">
+          <div class="n">Lamy Safari Rollerball</div>
+          <div class="p">Black ink · 18 g</div>
+        </div>
+        <a class="a" href="#">$36</a>
+      </li>
+      <li>
+        <div class="thumb"></div>
+        <div class="info">
+          <div class="n">Apple AirTag</div>
+          <div class="p">BLE · 11 g</div>
+        </div>
+        <a class="a" href="#">$29</a>
+      </li>
+    </ul>
+    <div style="margin-top:18px; padding-top:16px; border-top:1px solid var(--hairline); display:flex; justify-content:space-between; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft);">
+      <span>Total contents</span>
+      <span style="color: var(--ink); font-weight: 500;">~ 3.4 kg</span>
+    </div>
+  </aside>
+</section>
+
+<!-- ============ RELATED ============ -->
+<section class="rel-articles">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta">
+        <span class="kicker">§ Keep reading</span>
+        <h2 class="h2">Adjacent reads.</h2>
+      </div>
+      <a href="#" class="link">All features <span>↗</span></a>
+    </div>
+    <div class="grid">
+      <a class="article-card" href="#" style="display:block;">
+        <div class="ph" style="aspect-ratio: 16/10; margin-bottom: 16px;"><div class="ph__label">product · flat lay</div></div>
+        <div style="display:flex; gap:10px; margin-bottom:10px; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft);">
+          <span>Desk</span><span>·</span><span>8 min</span>
+        </div>
+        <h3 style="font-size:20px; letter-spacing:-0.018em; line-height:1.2; margin-bottom:8px;">Eleven desk gadgets that actually make you more productive.</h3>
+        <p style="font-size:14px; color:var(--ink-soft); line-height:1.5;">An honest sort of the dock, lamp, and stand pile-up — what we kept after the novelty wore off.</p>
+      </a>
+      <a class="article-card" href="#" style="display:block;">
+        <div class="ph" style="aspect-ratio: 16/10; margin-bottom: 16px;"><div class="ph__label">product · group shot</div></div>
+        <div style="display:flex; gap:10px; margin-bottom:10px; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft);">
+          <span>Travel</span><span>·</span><span>10 min</span>
+        </div>
+        <h3 style="font-size:20px; letter-spacing:-0.018em; line-height:1.2; margin-bottom:8px;">Business travel gear that saves an hour every airport.</h3>
+        <p style="font-size:14px; color:var(--ink-soft); line-height:1.5;">The packing system, the adapter that finally works, and the tracker we now refuse to fly without.</p>
+      </a>
+      <a class="article-card" href="#" style="display:block;">
+        <div class="ph" style="aspect-ratio: 16/10; margin-bottom: 16px;"><div class="ph__label">product · clean pouch</div></div>
+        <div style="display:flex; gap:10px; margin-bottom:10px; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft);">
+          <span>Consulting</span><span>·</span><span>6 min</span>
+        </div>
+        <h3 style="font-size:20px; letter-spacing:-0.018em; line-height:1.2; margin-bottom:8px;">The consultant's clean-laptop kit: six items, one zip pouch.</h3>
+        <p style="font-size:14px; color:var(--ink-soft); line-height:1.5;">Everything you need to walk into a client site looking deeply prepared without overpacking.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="logo" style="margin-bottom: 18px;">
+          <div class="logo-mark">CC</div>
+          <span>Corporate Carry</span>
+        </div>
+        <p style="font-size:14px; color:var(--ink-soft); max-width:32ch; line-height:1.5;">
+          A curated guide to the gadgets, tools, and everyday essentials that help modern office professionals work smarter, stay organized, and carry better.
+        </p>
+      </div>
+      <div>
+        <h5>Categories</h5>
+        <ul>
+          <li><a href="category.html">Backpack essentials</a></li>
+          <li><a href="#">Desk &amp; office</a></li>
+          <li><a href="#">Time-saving tools</a></li>
+          <li><a href="#">Meeting &amp; presentation</a></li>
+          <li><a href="#">Business travel</a></li>
+          <li><a href="#">Gift guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Editorial</h5>
+        <ul>
+          <li><a href="#">How we review</a></li>
+          <li><a href="#">Editor's carries</a></li>
+          <li><a href="#">The Friday Carry</a></li>
+          <li><a href="#">Methodology</a></li>
+          <li><a href="#">Reader submissions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>About</h5>
+        <ul>
+          <li><a href="#">Manifesto</a></li>
+          <li><a href="#">Independence</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Corporate Carry. Made for people with too many tabs open.</span>
+      <span>v.2.4 — Issue 047</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.__TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#a16207",
+    "bg": "#f6f1e6",
+    "tagline": "modern",
+    "density": "comfortable",
+    "showGrain": true,
+    "headlineStyle": "italic-serif"
+  }/*EDITMODE-END*/;
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks-app.jsx"></script>
+
+</body>
+</html>

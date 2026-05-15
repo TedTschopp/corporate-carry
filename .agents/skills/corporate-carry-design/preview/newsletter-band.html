@@ -1,0 +1,38 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .sub { background: #1a1614; color: #f6f1e6; padding: 28px; border-radius: 12px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; position: relative; overflow: hidden; }
+  .sub::before { content: ""; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, transparent 0 18px, rgba(255,255,255,0.025) 18px 19px); pointer-events: none; }
+  .sub > div { position: relative; z-index: 1; }
+  .k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(246,241,230,0.55); }
+  .sub h2 { color: #f6f1e6; font-size: 24px; letter-spacing: -0.025em; line-height: 1.05; margin: 10px 0 12px; font-weight: 600; }
+  .sub p { color: rgba(246,241,230,0.7); font-size: 13px; line-height: 1.5; margin: 0; max-width: 36ch; }
+  form { display: flex; gap: 6px; padding: 6px; background: rgba(255,255,255,0.06); border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); margin-top: 16px; }
+  input { flex: 1; background: transparent; border: none; outline: none; color: #f6f1e6; font: inherit; font-size: 13px; padding: 6px 12px; }
+  input::placeholder { color: rgba(246,241,230,0.4); }
+  button { background: #a16207; color: #fffdf6; border: none; border-radius: 999px; padding: 7px 14px; font-size: 12px; font-weight: 500; cursor: pointer; }
+  .stack { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .stat { border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 10px 14px; background: rgba(255,255,255,0.03); }
+  .stat .n { font-size: 22px; letter-spacing: -0.025em; font-weight: 600; line-height: 1; margin-bottom: 4px; }
+  .stat .l { font-family: var(--font-mono); font-size: 9.5px; color: rgba(246,241,230,0.55); letter-spacing: 0.08em; text-transform: uppercase; }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Newsletter band — dark</div>
+  <div class="sub">
+    <div>
+      <span class="k">§ 04 · The Friday Carry</span>
+      <h2>One useful thing.<br>Every Friday.</h2>
+      <p>A short note from the editors with the single best item we touched this week, why it matters, and where to get it.</p>
+      <form><input type="email" placeholder="you@company.com"><button>Subscribe</button></form>
+    </div>
+    <div class="stack">
+      <div class="stat"><div class="n">312</div><div class="l">Items in rotation</div></div>
+      <div class="stat"><div class="n">1,847</div><div class="l">Items rejected</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">Sponsored placements</div></div>
+    </div>
+  </div>
+</div>
+</body></html>

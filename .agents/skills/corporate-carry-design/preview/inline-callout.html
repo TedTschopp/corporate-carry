@@ -1,0 +1,36 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .inline { display: grid; grid-template-columns: 160px 1fr; gap: 18px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 12px; padding: 16px; position: relative; }
+  .tag { position: absolute; top: -9px; left: 18px; background: var(--bg); padding: 0 8px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+  .ph { aspect-ratio: 1; background-color: var(--bg-soft); background-image: repeating-linear-gradient(135deg, transparent 0 11px, rgba(26,22,20,0.06) 11px 12px); border: 1px solid var(--hairline); border-radius: 8px; display: grid; place-items: center; }
+  .ph__lbl { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); padding: 3px 6px; background: var(--bg); border: 1px solid var(--hairline); border-radius: 2px; }
+  .body { display: flex; flex-direction: column; gap: 6px; }
+  .cat { font-family: var(--font-mono); font-size: 10px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.08em; }
+  h4 { font-size: 18px; letter-spacing: -0.018em; line-height: 1.2; margin: 0; }
+  .blurb { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+  .foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--hairline); padding-top: 10px; margin-top: 4px; }
+  .price { font-family: var(--font-mono); font-size: 13px; font-weight: 500; }
+  .shop { font-family: var(--font-mono); font-size: 10px; color: var(--ink-soft); }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Inline product callout (long-read)</div>
+  <article class="inline">
+    <span class="tag">★ Editor's choice</span>
+    <div class="ph"><span class="ph__lbl">product · backpack</span></div>
+    <div class="body">
+      <span class="cat">Backpack · 14L · 720g</span>
+      <h4>Bellroy Tokyo Totepack Compact</h4>
+      <div class="blurb">Two-zip access. Carries as a tote when the office wants tote energy. Compresses flat under a hotel desk.</div>
+      <div class="foot">
+        <span class="price">$199</span>
+        <span class="shop">Bellroy · Huckberry</span>
+      </div>
+    </div>
+  </article>
+  <div class="note">Used inline in editorial body. Notched "tag" label crosses the top border to signal an editorial recommendation.</div>
+</div>
+</body></html>

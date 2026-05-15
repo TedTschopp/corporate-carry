@@ -1,0 +1,39 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--hairline); }
+  .meta { display: flex; flex-direction: column; gap: 8px; }
+  .kicker { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
+  h2 { font-size: 28px; letter-spacing: -0.025em; line-height: 1.1; margin: 0; font-weight: 600; }
+  .link { color: var(--ink-soft); font-size: 13px; display: inline-flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--hairline); padding-bottom: 2px; }
+  .filter-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding-top: 14px; }
+  .lbl { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-right: 4px; }
+  .pill { padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 999px; background: var(--paper); font-size: 12px; color: var(--ink-2); cursor: pointer; }
+  .pill.active { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Section head &amp; filters</div>
+  <div class="section-head">
+    <div class="meta">
+      <span class="kicker">§ 02 · Latest roundups</span>
+      <h2>Recently put through a real workweek.</h2>
+    </div>
+    <a class="link">All articles <span>↗</span></a>
+  </div>
+  <div class="filter-row">
+    <span class="lbl">Use</span>
+    <button class="pill active">All</button>
+    <button class="pill">Office</button>
+    <button class="pill">Hybrid</button>
+    <button class="pill">Travel</button>
+    <span class="lbl" style="margin-left:14px;">Price</span>
+    <button class="pill">&lt; $25</button>
+    <button class="pill">$25–75</button>
+    <button class="pill">$75+</button>
+  </div>
+  <div class="note">Mono kicker eyebrow above a sentence-cased H2 with a period. Right-aligned "↗" link. Filter rail is pills + mono label.</div>
+</div>
+</body></html>

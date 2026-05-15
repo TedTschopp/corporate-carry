@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Backpack Essentials — Corporate Carry</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .cat-hero {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .breadcrumb {
+    display: flex; gap: 8px; align-items: center;
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-soft); margin-bottom: 28px;
+  }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb .sep { color: var(--hairline-2); }
+  .cat-hero__main {
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: end;
+  }
+  .cat-hero h1 {
+    font-size: clamp(48px, 6vw, 88px);
+    line-height: 0.95; letter-spacing: -0.04em;
+    margin-bottom: 20px;
+  }
+  .cat-hero h1 .em { font-style: italic; color: var(--accent); font-family: "Times New Roman", serif; font-weight: 500;}
+  .cat-hero .desc { font-size: 17px; color: var(--ink-2); line-height: 1.5; max-width: 50ch; }
+  .cat-stats {
+    display: grid; grid-template-columns: 1fr; gap: 0;
+    border: 1px solid var(--hairline); border-radius: var(--radius);
+    overflow: hidden; background: var(--paper);
+  }
+  .cat-stats .stat-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 18px; border-bottom: 1px solid var(--hairline);
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em;
+  }
+  .cat-stats .stat-row:last-child { border-bottom: none; }
+  .cat-stats .l { color: var(--ink-soft); text-transform: uppercase; font-size: 11px; letter-spacing: 0.08em; }
+  .cat-stats .v { color: var(--ink); font-weight: 500; }
+
+  /* Filters bar */
+  .filters {
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .filter-grp { display: flex; gap: 6px; align-items: center; }
+  .filter-grp .lbl {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-mute); margin-right: 4px;
+  }
+  .pill {
+    padding: 7px 13px; border: 1px solid var(--hairline);
+    border-radius: 999px; background: var(--paper);
+    font-size: 13px; color: var(--ink-2); cursor: pointer;
+    transition: all .15s ease;
+  }
+  .pill:hover { border-color: var(--ink); color: var(--ink); }
+  .pill.active { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .filters .right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  .sort {
+    padding: 7px 13px; background: var(--paper);
+    border: 1px solid var(--hairline); border-radius: 999px;
+    font-size: 13px; color: var(--ink-2);
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  /* Editorial intro band */
+  .intro-band {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .intro-band__grid {
+    display: grid; grid-template-columns: 1fr 1.6fr; gap: 56px; align-items: start;
+  }
+  .intro-band p { font-size: 16px; line-height: 1.55; color: var(--ink-2); }
+  .intro-band p + p { margin-top: 14px; }
+  .intro-band .author {
+    display: flex; align-items: center; gap: 12px;
+    margin-top: 24px;
+  }
+  .avatar {
+    width: 40px; height: 40px; border-radius: 999px;
+    background: var(--accent-tint);
+    border: 1px solid var(--hairline);
+    display: grid; place-items: center;
+    font-family: var(--font-mono); font-size: 13px; color: var(--accent-2); font-weight: 500;
+  }
+  .author__meta { font-size: 13px; }
+  .author__meta .n { color: var(--ink); font-weight: 500; }
+  .author__meta .b { color: var(--ink-soft); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* Products grid */
+  .products-section { padding: 56px 0; }
+  .products-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  }
+  .products-grid .product { transition: all .2s ease; }
+  .products-grid .product:hover { border-color: var(--hairline-2); transform: translateY(-2px); box-shadow: var(--shadow); }
+
+  /* Tier blocks */
+  .tier {
+    margin-bottom: 56px;
+  }
+  .tier__head {
+    display: flex; align-items: baseline; gap: 16px;
+    padding-bottom: 16px; margin-bottom: 24px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .tier__head .badge {
+    font-family: var(--font-mono); font-size: 11px;
+    background: var(--ink); color: var(--bg);
+    padding: 4px 8px; border-radius: 2px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .tier__head .badge.accent { background: var(--accent); }
+  .tier__head h2 { font-size: 28px; letter-spacing: -0.02em; }
+  .tier__head .count {
+    margin-left: auto;
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .tier__intro {
+    font-size: 14px; color: var(--ink-soft); max-width: 64ch;
+    margin-top: -12px; margin-bottom: 24px;
+  }
+
+  /* Compare table */
+  .compare {
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    background: var(--paper);
+    overflow: hidden;
+    margin-top: 56px;
+  }
+  .compare__head {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--hairline);
+    background: var(--surface);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .compare__head h3 { font-size: 18px; letter-spacing: -0.015em; }
+  .compare table { width: 100%; border-collapse: collapse; }
+  .compare th, .compare td {
+    text-align: left; padding: 14px 24px;
+    border-bottom: 1px solid var(--hairline); font-size: 13.5px;
+  }
+  .compare th {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-soft); font-weight: 500;
+    background: var(--surface);
+  }
+  .compare tr:last-child td { border-bottom: none; }
+  .compare td.name { font-weight: 500; }
+  .compare td.mono { font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); }
+  .compare td.score { font-family: var(--font-mono); color: var(--accent-2); font-weight: 500; }
+  .compare tbody tr:hover { background: var(--surface); }
+
+  /* Related cats */
+  .related {
+    background: var(--ink); color: var(--bg);
+    padding: 56px 0;
+    position: relative; overflow: hidden;
+  }
+  .related::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(135deg, transparent 0 18px, rgba(255,255,255,0.025) 18px 19px);
+    pointer-events: none;
+  }
+  .related .kicker { color: color-mix(in srgb, var(--bg) 55%, transparent); }
+  .related h2 { color: var(--bg); }
+  .related .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    position: relative; z-index: 1;
+  }
+  .related-card {
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    background: rgba(255,255,255,0.02);
+    transition: all .2s ease;
+    display: flex; flex-direction: column; gap: 12px; min-height: 180px;
+  }
+  .related-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); }
+  .related-card .n {
+    font-family: var(--font-mono); font-size: 11px;
+    color: color-mix(in srgb, var(--bg) 55%, transparent);
+    letter-spacing: 0.08em;
+  }
+  .related-card h4 { font-size: 22px; color: var(--bg); letter-spacing: -0.02em; line-height: 1.1; flex: 1; }
+  .related-card .arr { color: var(--accent); }
+
+  @media (max-width: 1100px) {
+    .products-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 980px) {
+    .cat-hero__main { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .intro-band__grid { grid-template-columns: 1fr; }
+    .related .grid { grid-template-columns: 1fr 1fr; }
+    .site-footer .top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body data-screen-label="02 Category — Backpack">
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap bar">
+    <div class="logo">
+      <div class="logo-mark">CC</div>
+      <span>Corporate Carry</span>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="category.html" class="active">Backpack</a>
+      <a href="#">Desk</a>
+      <a href="#">Travel</a>
+      <a href="#">Meetings</a>
+      <a href="#">Gift Guides</a>
+    </nav>
+    <div class="utility">
+      <button class="iconbtn" aria-label="Search">
+        <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <a href="index.html#sub" class="btn btn--sm btn--ghost" style="border-color:var(--hairline)">Subscribe</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CATEGORY HERO ============ -->
+<section class="cat-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Corporate Carry</a>
+      <span class="sep">/</span>
+      <a href="#">Categories</a>
+      <span class="sep">/</span>
+      <span style="color:var(--ink);">Backpack essentials</span>
+    </div>
+    <div class="cat-hero__main">
+      <div>
+        <span class="kicker kicker--accent">§ 01 · Category</span>
+        <h1 style="margin-top:14px;">Backpack <span class="em">essentials.</span></h1>
+        <p class="desc">The chargers, cables, pouches, notebooks, and quiet little EDC tools that earn a permanent place in a corporate work bag. Pared down to what we actually carry — and what we've quietly returned to the drawer.</p>
+      </div>
+      <div class="cat-stats">
+        <div class="stat-row"><span class="l">Items reviewed</span><span class="v">84</span></div>
+        <div class="stat-row"><span class="l">Editor's picks</span><span class="v">12</span></div>
+        <div class="stat-row"><span class="l">Avg. price</span><span class="v">$48</span></div>
+        <div class="stat-row"><span class="l">Last updated</span><span class="v">May 12, 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO BAND ============ -->
+<section class="intro-band">
+  <div class="wrap">
+    <div class="intro-band__grid">
+      <div>
+        <span class="kicker">Editorial note</span>
+        <div class="author">
+          <div class="avatar">MR</div>
+          <div class="author__meta">
+            <div class="n">Maya Reyes</div>
+            <div class="b">Senior editor</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p>Most "backpack essentials" lists are too generous — every charger, every pouch, every notebook gets a slot. Ours is the opposite. The bar to be on this page is simple: does it survive a normal corporate week without becoming clutter?</p>
+        <p>What you'll find here is what made the cut after months of rotation between offices, airports, client sites, and one cramped coworking spot in Lisbon. Items are tiered by how often we'd recommend them — not how shiny they are.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FILTERS ============ -->
+<div class="wrap">
+  <div class="filters">
+    <div class="filter-grp">
+      <span class="lbl">Use</span>
+      <button class="pill active">All</button>
+      <button class="pill">Office</button>
+      <button class="pill">Hybrid</button>
+      <button class="pill">Travel</button>
+      <button class="pill">Client visit</button>
+    </div>
+    <div class="filter-grp" style="margin-left:8px;">
+      <span class="lbl">Price</span>
+      <button class="pill">&lt; $25</button>
+      <button class="pill">$25–75</button>
+      <button class="pill">$75+</button>
+    </div>
+    <div class="right">
+      <span class="lbl" style="margin-right:0;">Sort</span>
+      <div class="sort">Editor's pick first
+        <svg class="i" viewBox="0 0 24 24" style="width:12px;height:12px;"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="products-section">
+  <div class="wrap">
+
+    <!-- TIER 1 -->
+    <div class="tier">
+      <div class="tier__head">
+        <span class="badge accent">★ Tier 1</span>
+        <h2>Earn-their-spot essentials</h2>
+        <span class="count">4 picks</span>
+      </div>
+      <p class="tier__intro">The four items every editor on this site carries every working day. If you only buy from one tier, buy from this one.</p>
+      <div class="products-grid">
+
+        <article class="product">
+          <div class="product__media">
+            <div class="ph" style="height:100%; border-radius:0; border:none;"><div class="ph__label">product · charger</div></div>
+            <span class="product__index">01</span>
+            <span class="product__pick">Top pick</span>
+          </div>
+          <div class="product__body">
+            <span class="product__cat">Power · 65W</span>
+            <h4 class="product__name">Anker 735 Nano II Charger</h4>
+            <p class="product__blurb">The "I forgot mine" problem solved by something the size of a stack of business cards. Charges a 14" laptop, phone, and earbuds at once.</p>
+            <div class="product__footer">
+              <div class="price">$55</div>
+              <div class="shop">
+                <a href="#">Amazon</a><span class="sep">·</span>
+                <a href="#">Anker</a><span class="sep">·</span>
+                <a href="#">Best Buy</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product__media">
+            <div class="ph" style="height:100%; border-radius:0; border:none;"><div class="ph__label">product · pouch</div></div>
+            <span class="product__index">02</span>
+            <span class="product__pick">Top pick</span>
+          </div>
+          <div class="product__body">
+            <span class="product__cat">Organization · M</span>
+            <h4 class="product__name">Bellroy Classic Tech Pouch</h4>
+            <p class="product__blurb">Holds the entire "cables and chargers" mess in a single zip. The interior fold is the unsung hero — separates fast charge from slow.</p>
+            <div class="product__footer">
+              <div class="price">$89</div>
+              <div class="shop">
+                <a href="#">Bellroy</a><span class="sep">·</span>
+                <a href="#">Huckberry</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product__media">
+            <div class="ph" style="height:100%; border-radius:0; border:none;"><div class="ph__label">product · headphones</div></div>
+            <span class="product__index">03</span>
+            <span class="product__pick">Top pick</span>
+          </div>
+          <div class="product__body">
+            <span class="product__cat">Audio · ANC</span>
+            <h4 class="product__name">Sony WH-1000XM5</h4>
+            <p class="product__blurb">The "open office is loud" answer that also doubles as a flight headphone. Multipoint pairing means laptop + phone without the dance.</p>
+            <div class="product__footer">
+              <div class="price"><s>$399</s>$329</div>
+              <div class="shop">
+                <a href="#">Amazon</a><span class="sep">·</span>
+                <a href="#">Sony</a><span class="sep">·</span>
+                <a href="#">B&amp;H</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product__media">
+            <div class="ph" style="height:100%; border-radius:0; border:none;"><div class="ph__label">product · notebook</div></div>
+            <span class="product__index">04</span>
+            <span class="product__pick">Top pick</span>
+          </div>
+          <div class="product__body">
+            <span class="product__cat">Paper · A5</span>
+            <h4 class="product__name">Leuchtturm1917 Hardcover A5</h4>
+            <p class="product__blurb">Numbered pages, an index, and a binding that lies flat. The notebook that survives both a 90-minute meeting and a 9-month project.</p>
+            <div class="product__footer">
+              <div class="price">$26</div>
+              <div class="shop">
+                <a href="#">Goulet</a><span class="sep">·</span>
+                <a href="#">Amazon</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- TIER 2 -->
+    <div class="tier">
+      <div class="tier__head">
+        <span class="badge">Tier 2</span>
+        <h2>Worth carrying on most days</h2>
+        <span class="count">8 picks</span>
+      </div>
+      <p class="tier__intro">Not for every bag, but the right fit for most. Pick the ones that solve a problem you actually have this quarter.</p>
+      <div class="products-grid">
+
+        <article class="product">
+          <div class="product__media">
+            <div class="ph" style="height:100%; border-radius:0; border:none;"><div class="ph__label">product · power bank</div></div>
+            <span class="product__index">05</span>
+          </div>
+          <div class="product__body">
+            <span class="product__cat">Power · 20,000 mAh</span>
+            <h4 class="product__name">Anker Prime 20K Power Bank</h4>
+            <p class="product__blurb">Two laptop charges, a phone, and earbuds without breaking a sweat. The little OLED display is sneaky-useful.</p>
+            <div class="product__footer">
+              <div class="price">$129</div>
+              <div class="shop">
+                <a href="#">Anker</a><span class="sep">·</span>
+                <a href="#">Amazon</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product__media">
+            <div class="ph" style="height:100%; border-radius:0; border:none;"><div class="ph__label">product · cable</div></div>
+            <span class="product__index">06</span>
+          </div>
+          <div class="product__body">
+            <span class="product__cat">Cables · 1m</span>
+            <h4 class="product__name">Nimble PowerKnit USB-C Cable</h4>
+            <p class="product__blurb">A braided 100W cable that doesn't fray, kink, or develop a personality after six months in a tech pouch.</p>
+            <div class="product__footer">
+              <div class="price">$28</div>
+              <div class="shop">
+                <a href="#">Nimble</a><span class="sep">·</span>
+                <a href="#">Amazon</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product__media">
+            <div class="ph" style="height:100%; border-radius:0; border:none;"><div class="ph__label">product · stand</div></div>
+            <span class="product__index">07</span>
+          </div>
+          <div class="product__body">
+            <span class="product__cat">Ergonomics · Folding</span>
+            <h4 class="product__name">Roost Laptop Stand v3</h4>
+            <p class="product__blurb">The hot-desking fix. Folds to the size of a pen, holds the screen at eye-level, weighs less than a banana.</p>
+            <div class="product__footer">
+              <div class="price">$89</div>
+              <div class="shop">
+                <a href="#">Roost</a><span class="sep">·</span>
+                <a href="#">Amazon</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product__media">
+            <div class="ph" style="height:100%; border-radius:0; border:none;"><div class="ph__label">product · hub</div></div>
+            <span class="product__index">08</span>
+          </div>
+          <div class="product__body">
+            <span class="product__cat">Connectivity · 7-in-1</span>
+            <h4 class="product__name">Anker 555 USB-C Hub</h4>
+            <p class="product__blurb">HDMI, two USB-A, SD, microSD, PD pass-through. The thing you remember once you're sitting in a conference room with a projector.</p>
+            <div class="product__footer">
+              <div class="price">$69</div>
+              <div class="shop">
+                <a href="#">Anker</a><span class="sep">·</span>
+                <a href="#">Amazon</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product__media">
+            <div class="ph" style="height:100%; border-radius:0; border:none;"><div class="ph__label">product · pen</div></div>
+            <span class="product__index">09</span>
+          </div>
+          <div class="product__body">
+            <span class="product__cat">Writing · Rollerball</span>
+            <h4 class="product__name">Lamy Safari Rollerball</h4>
+            <p class="product__blurb">Professional without being pretentious. Hands it to a client and it never feels like a flex.</p>
+            <div class="product__footer">
+              <div class="price">$36</div>
+              <div class="shop">
+                <a href="#">Goulet</a><span class="sep">·</span>
+                <a href="#">Lamy</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product__media">
+            <div class="ph" style="height:100%; border-radius:0; border:none;"><div class="ph__label">product · earbuds</div></div>
+            <span class="product__index">10</span>
+          </div>
+          <div class="product__body">
+            <span class="product__cat">Audio · True wireless</span>
+            <h4 class="product__name">Apple AirPods Pro (2nd Gen)</h4>
+            <p class="product__blurb">The right answer to "I have a call in three minutes." Transparency mode quietly makes them office-appropriate.</p>
+            <div class="product__footer">
+              <div class="price">$249</div>
+              <div class="shop">
+                <a href="#">Apple</a><span class="sep">·</span>
+                <a href="#">Amazon</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product__media">
+            <div class="ph" style="height:100%; border-radius:0; border:none;"><div class="ph__label">product · umbrella</div></div>
+            <span class="product__index">11</span>
+          </div>
+          <div class="product__body">
+            <span class="product__cat">Travel · Compact</span>
+            <h4 class="product__name">Blunt Metro Umbrella</h4>
+            <p class="product__blurb">Doesn't flip in wind, doesn't shred from misuse, and lives quietly in a side pocket for six months at a time.</p>
+            <div class="product__footer">
+              <div class="price">$95</div>
+              <div class="shop">
+                <a href="#">Blunt</a><span class="sep">·</span>
+                <a href="#">Huckberry</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product__media">
+            <div class="ph" style="height:100%; border-radius:0; border:none;"><div class="ph__label">product · tracker</div></div>
+            <span class="product__index">12</span>
+          </div>
+          <div class="product__body">
+            <span class="product__cat">Tracking · BLE</span>
+            <h4 class="product__name">Apple AirTag (4-pack)</h4>
+            <p class="product__blurb">One in the bag, one in the laptop sleeve. The "I left it in the conference room" insurance policy.</p>
+            <div class="product__footer">
+              <div class="price">$99</div>
+              <div class="shop">
+                <a href="#">Apple</a><span class="sep">·</span>
+                <a href="#">Amazon</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- COMPARE -->
+    <div class="compare">
+      <div class="compare__head">
+        <h3>Quick compare — Tier 1 power & audio</h3>
+        <span class="kicker">Tested Mar–May 2026</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Weight</th>
+            <th>Best for</th>
+            <th>Real-world battery</th>
+            <th>Score</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name">Anker 735 Nano II — 65W</td>
+            <td class="mono">95 g</td>
+            <td>Daily office</td>
+            <td class="mono">—</td>
+            <td class="score">9.4</td>
+            <td><a href="#" style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">View →</a></td>
+          </tr>
+          <tr>
+            <td class="name">Anker Prime 20K Power Bank</td>
+            <td class="mono">348 g</td>
+            <td>Client visits</td>
+            <td class="mono">2× laptop · 8h</td>
+            <td class="score">9.1</td>
+            <td><a href="#" style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">View →</a></td>
+          </tr>
+          <tr>
+            <td class="name">Sony WH-1000XM5</td>
+            <td class="mono">250 g</td>
+            <td>Open office + flights</td>
+            <td class="mono">30 h ANC on</td>
+            <td class="score">9.3</td>
+            <td><a href="#" style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">View →</a></td>
+          </tr>
+          <tr>
+            <td class="name">Apple AirPods Pro (2nd Gen)</td>
+            <td class="mono">51 g</td>
+            <td>Hot-desking calls</td>
+            <td class="mono">6 h · 30 h case</td>
+            <td class="score">8.9</td>
+            <td><a href="#" style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">View →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ RELATED CATEGORIES ============ -->
+<section class="related">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom: 36px;">
+      <div class="meta">
+        <span class="kicker">§ Continue</span>
+        <h2 class="h2">Next in the workday carry.</h2>
+      </div>
+    </div>
+    <div class="grid">
+      <a class="related-card" href="#">
+        <span class="n">02 · 62 items</span>
+        <h4>Desk & office upgrades</h4>
+        <span class="arr mono">View category →</span>
+      </a>
+      <a class="related-card" href="#">
+        <span class="n">04 · 38 items</span>
+        <h4>Meeting & presentation gear</h4>
+        <span class="arr mono">View category →</span>
+      </a>
+      <a class="related-card" href="#">
+        <span class="n">05 · 56 items</span>
+        <h4>Business travel kit</h4>
+        <span class="arr mono">View category →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="logo" style="margin-bottom: 18px;">
+          <div class="logo-mark">CC</div>
+          <span>Corporate Carry</span>
+        </div>
+        <p style="font-size:14px; color:var(--ink-soft); max-width:32ch; line-height:1.5;">
+          A curated guide to the gadgets, tools, and everyday essentials that help modern office professionals work smarter, stay organized, and carry better.
+        </p>
+      </div>
+      <div>
+        <h5>Categories</h5>
+        <ul>
+          <li><a href="category.html">Backpack essentials</a></li>
+          <li><a href="#">Desk &amp; office</a></li>
+          <li><a href="#">Time-saving tools</a></li>
+          <li><a href="#">Meeting &amp; presentation</a></li>
+          <li><a href="#">Business travel</a></li>
+          <li><a href="#">Gift guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Editorial</h5>
+        <ul>
+          <li><a href="#">How we review</a></li>
+          <li><a href="#">Editor's carries</a></li>
+          <li><a href="#">The Friday Carry</a></li>
+          <li><a href="#">Methodology</a></li>
+          <li><a href="#">Reader submissions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>About</h5>
+        <ul>
+          <li><a href="#">Manifesto</a></li>
+          <li><a href="#">Independence</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Corporate Carry. Made for people with too many tabs open.</span>
+      <span>v.2.4 — Issue 047</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.__TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#a16207",
+    "bg": "#f6f1e6",
+    "tagline": "modern",
+    "density": "comfortable",
+    "showGrain": true,
+    "headlineStyle": "italic-serif"
+  }/*EDITMODE-END*/;
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks-app.jsx"></script>
+
+</body>
+</html>

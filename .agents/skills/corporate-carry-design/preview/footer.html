@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: var(--bg-soft); }
+  .top { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--hairline); }
+  .logo { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; margin-bottom: 12px; }
+  .mark { width: 24px; height: 24px; background: var(--ink); color: var(--bg); display: grid; place-items: center; font-family: var(--font-mono); font-size: 11px; font-weight: 600; border-radius: 2px; }
+  .desc { font-size: 12px; color: var(--ink-soft); line-height: 1.5; max-width: 30ch; }
+  h5 { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 10px; font-weight: 500; }
+  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  ul a { color: var(--ink-2); font-size: 12.5px; }
+  .bottom { display: flex; justify-content: space-between; padding-top: 14px; font-family: var(--font-mono); font-size: 10px; color: var(--ink-soft); letter-spacing: 0.06em; }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Site footer</div>
+  <div class="top">
+    <div>
+      <div class="logo"><div class="mark">CC</div><span>Corporate Carry</span></div>
+      <p class="desc">A curated guide to the gadgets, tools, and everyday essentials that help modern office professionals work smarter.</p>
+    </div>
+    <div>
+      <h5>Categories</h5>
+      <ul><li><a>Backpack essentials</a></li><li><a>Desk &amp; office</a></li><li><a>Time-saving tools</a></li><li><a>Business travel</a></li></ul>
+    </div>
+    <div>
+      <h5>Editorial</h5>
+      <ul><li><a>How we review</a></li><li><a>Editor's carries</a></li><li><a>The Friday Carry</a></li><li><a>Methodology</a></li></ul>
+    </div>
+    <div>
+      <h5>About</h5>
+      <ul><li><a>Manifesto</a></li><li><a>Independence</a></li><li><a>Privacy</a></li><li><a>Contact</a></li></ul>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© 2026 Corporate Carry. Made for people with too many tabs open.</span>
+    <span>v.2.4 — Issue 047</span>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .head { display: flex; align-items: baseline; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--hairline); }
+  .badge { font-family: var(--font-mono); font-size: 10px; background: var(--ink); color: var(--bg); padding: 4px 8px; border-radius: 2px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .badge.accent { background: var(--accent); }
+  h2 { font-size: 26px; letter-spacing: -0.02em; margin: 0; line-height: 1; }
+  .count { margin-left: auto; font-family: var(--font-mono); font-size: 10px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.08em; }
+  .intro { font-size: 13px; color: var(--ink-soft); max-width: 64ch; margin-top: 14px; line-height: 1.5; }
+</style></head>
+<body>
+<div class="card card--tight">
+  <div class="eyebrow"><span class="num">§</span> Tier header</div>
+  <div class="head">
+    <span class="badge accent">★ Tier 1</span>
+    <h2>Earn-their-spot essentials</h2>
+    <span class="count">4 picks</span>
+  </div>
+  <p class="intro">The four items every editor on this site carries every working day. If you only buy from one tier, buy from this one.</p>
+  <div class="head" style="margin-top: 18px;">
+    <span class="badge">Tier 2</span>
+    <h2>Worth carrying on most days</h2>
+    <span class="count">8 picks</span>
+  </div>
+</div>
+</body></html>
