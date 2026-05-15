@@ -35,5 +35,20 @@
   <footer class="site-footer wrap">
     <p>Corporate Carry · Static fallback page.</p>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const footerText = document.querySelector('.site-footer p');
+      if (footerText) {
+        footerText.style.cursor = 'pointer';
+        footerText.addEventListener('click', () => {
+          // Assuming tweaksApp is the function to activate the tweaks menu
+          if (window.tweaksApp) {
+            window.tweaksApp.activate();
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

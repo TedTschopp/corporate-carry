@@ -632,5 +632,20 @@
 <script type="text/babel" src="tweaks-panel.jsx"></script>
 <script type="text/babel" src="tweaks-app.jsx"></script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const footerText = document.querySelector('.site-footer .bottom span:first-child');
+    if (footerText) {
+      footerText.style.cursor = 'pointer';
+      footerText.addEventListener('click', () => {
+        // Assuming tweaksApp is the function to activate the tweaks menu
+        if (window.tweaksApp) {
+          window.tweaksApp.activate();
+        }
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
