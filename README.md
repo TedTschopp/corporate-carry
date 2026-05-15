@@ -4,7 +4,7 @@ This repository is currently a flat, static website intended for GitHub Pages.
 
 ## Current state
 
-- Under-construction visual treatment across all public pages.
+- Full design-system homepage and editorial page templates are live.
 - No middle tier.
 - No backend services.
 - No API calls.
@@ -12,10 +12,13 @@ This repository is currently a flat, static website intended for GitHub Pages.
 
 ## Pages
 
-- `index.html`
-- `catalog.html`
-- `journal.html`
-- `404.html`
+- `index.html` (homepage)
+- `category.html` (category layout)
+- `article.html` (long-form article layout)
+- `catalog.html` (category-route mirror)
+- `journal.html` (article-route mirror)
+- `404.html` (fallback)
+- `styles.css` (shared design system styling)
 
 ## Publish on GitHub Pages
 

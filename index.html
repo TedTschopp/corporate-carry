@@ -1,74 +1,665 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Corporate Carry | Under Construction</title>
-  <meta name="description" content="Corporate Carry is being rebuilt as a static GitHub Pages site.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<title>Corporate Carry — Everyday carry for the modern professional</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Corporate Carry curates the best office gadgets, backpack essentials, desk upgrades, productivity tools, and business travel gear for modern professionals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ---------- Homepage-specific ---------- */
+  .hero {
+    padding: 64px 0 72px;
+    border-bottom: 1px solid var(--hairline);
+    position: relative;
+  }
+  .hero__top {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 40px;
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft);
+  }
+  .hero__top .nums { display: flex; gap: 24px; }
+  .hero__main { display: grid; grid-template-columns: 1.45fr 1fr; gap: 56px; align-items: end; }
+  .hero h1 {
+    font-size: clamp(56px, 7.6vw, 116px);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .hero h1 .em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-family: "Times New Roman", "Times", serif;
+    letter-spacing: -0.02em;
+  }
+  .hero__lede {
+    font-size: 18px; line-height: 1.5; color: var(--ink-2);
+    max-width: 56ch; margin-bottom: 28px;
+  }
+  .hero__cta { display: flex; gap: 12px; }
+  .hero__featured {
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    background: var(--paper);
+    overflow: hidden;
+  }
+  .hero__featured .ph { border-radius: 0; border: none; aspect-ratio: 5 / 4; }
+  .hero__featured .meta { padding: 20px 22px 22px; }
+  .hero__featured .row1 {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10px; font-family: var(--font-mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft);
+  }
+  .hero__featured h3 { font-size: 20px; letter-spacing: -0.015em; margin-bottom: 4px; }
+  .hero__featured p { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 14px; }
+  .hero__featured .specs {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--hairline);
+    padding-top: 14px; gap: 8px;
+  }
+  .hero__featured .spec {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .hero__featured .spec span:first-child {
+    font-family: var(--font-mono); font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);
+  }
+  .hero__featured .spec span:last-child {
+    font-size: 13px; color: var(--ink); font-weight: 500;
+  }
+
+  /* Marquee strip */
+  .strip {
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    background: var(--bg-soft);
+    overflow: hidden;
+  }
+  .strip__inner {
+    display: flex; gap: 64px; padding: 14px 0;
+    font-family: var(--font-mono); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-soft); white-space: nowrap;
+    animation: scroll 40s linear infinite;
+  }
+  .strip__inner span { display: inline-flex; align-items: center; gap: 12px; }
+  .strip__inner .dot { background: var(--accent); }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* Categories */
+  .cats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--hairline);
+    border: 1px solid var(--hairline); border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .cat {
+    background: var(--paper);
+    padding: 24px 26px 28px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 240px;
+    position: relative;
+    transition: background .2s ease;
+  }
+  .cat:hover { background: var(--surface); }
+  .cat__num { font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); letter-spacing: 0.08em; }
+  .cat__title { font-size: 28px; letter-spacing: -0.025em; line-height: 1.05; margin: 8px 0 12px; }
+  .cat__desc { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 16px; }
+  .cat__foot {
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .cat__foot .arr { color: var(--accent); }
+  .cat__viz {
+    margin-bottom: auto;
+    height: 64px;
+    display: flex; align-items: flex-start; gap: 8px;
+    color: var(--ink-soft);
+  }
+
+  /* Picks (Editor's carries) */
+  .picks {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  }
+  .pick {
+    display: grid; grid-template-columns: 180px 1fr; gap: 24px;
+    padding: 24px 0; border-top: 1px solid var(--hairline);
+  }
+  .pick:first-child, .pick:nth-child(2) { border-top: none; padding-top: 0; }
+  .pick__ph { aspect-ratio: 1; border-radius: var(--radius); }
+  .pick__title { font-size: 18px; line-height: 1.25; margin: 6px 0 6px; letter-spacing: -0.015em; }
+  .pick__by { font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+  .pick__list { list-style: none; padding: 0; margin: 0; font-size: 13.5px; color: var(--ink-soft); }
+  .pick__list li {
+    display: flex; justify-content: space-between; padding: 5px 0;
+    border-bottom: 1px dashed var(--hairline);
+  }
+  .pick__list li:last-child { border-bottom: none; }
+  .pick__list .n { font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); }
+
+  /* Articles */
+  .articles {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 32px;
+  }
+  .article-card { background: transparent; border: none; padding: 0; }
+  .article-card .ph { aspect-ratio: 16/10; margin-bottom: 16px; }
+  .article-card.feat .ph { aspect-ratio: 4/3; }
+  .article-card .meta-row {
+    display: flex; gap: 10px; align-items: center; margin-bottom: 10px;
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--ink-soft);
+  }
+  .article-card h3 {
+    font-size: 20px; letter-spacing: -0.018em; line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .article-card.feat h3 { font-size: 32px; letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 12px;}
+  .article-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+  .article-card a:hover h3 { color: var(--accent); }
+
+  /* Newsletter */
+  .sub {
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    background: var(--ink);
+    color: var(--bg);
+    padding: 56px;
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .sub::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(135deg, transparent 0 18px, rgba(255,255,255,0.025) 18px 19px);
+    pointer-events: none;
+  }
+  .sub h2 { color: var(--bg); font-size: 40px; letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 16px; }
+  .sub p { color: color-mix(in srgb, var(--bg) 70%, transparent); font-size: 15px; line-height: 1.5; max-width: 44ch; }
+  .sub form {
+    display: flex; gap: 8px; padding: 8px;
+    background: rgba(255,255,255,0.06); border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .sub input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: var(--bg); font: inherit; font-size: 14px; padding: 8px 14px;
+  }
+  .sub input::placeholder { color: rgba(255,255,255,0.4); }
+  .sub button {
+    background: var(--accent); color: var(--paper);
+    border: none; border-radius: 999px;
+    padding: 10px 18px; font-size: 13px; font-weight: 500;
+    transition: background .15s ease;
+  }
+  .sub button:hover { background: var(--accent-2); }
+  .sub .perks {
+    display: flex; flex-direction: column; gap: 10px;
+    margin-top: 16px;
+    font-family: var(--font-mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: color-mix(in srgb, var(--bg) 55%, transparent);
+  }
+  .sub .perks div { display: flex; align-items: center; gap: 10px; }
+  .sub .perks .dot { background: var(--accent); }
+
+  .stat-stack {
+    display: grid; grid-template-columns: 1fr; gap: 18px;
+    position: relative; z-index: 1;
+  }
+  .stat-stack .stat {
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.03);
+  }
+  .stat .n {
+    font-size: 32px; letter-spacing: -0.025em; font-weight: 600; line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat .l {
+    font-family: var(--font-mono); font-size: 11px;
+    color: color-mix(in srgb, var(--bg) 55%, transparent);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  @media (max-width: 980px) {
+    .hero__main { grid-template-columns: 1fr; gap: 32px; }
+    .cats { grid-template-columns: 1fr 1fr; }
+    .articles { grid-template-columns: 1fr; }
+    .picks { grid-template-columns: 1fr; }
+    .sub { grid-template-columns: 1fr; padding: 32px; }
+    .site-footer .top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+</style>
 </head>
-<body>
-  <div class="grain" aria-hidden="true"></div>
-  <header class="site-header wrap">
-    <a class="brand" href="index.html">Corporate Carry</a>
-    <nav class="site-nav" aria-label="Primary">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="catalog.html">Catalog</a>
-      <a href="journal.html">Journal</a>
+<body data-screen-label="01 Homepage">
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap bar">
+    <div class="logo">
+      <div class="logo-mark">CC</div>
+      <span>Corporate Carry</span>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="category.html">Backpack</a>
+      <a href="#">Desk</a>
+      <a href="#">Travel</a>
+      <a href="#">Meetings</a>
+      <a href="#">Gift Guides</a>
     </nav>
-  </header>
+    <div class="utility">
+      <button class="iconbtn" aria-label="Search">
+        <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <a href="#sub" class="btn btn--sm btn--ghost" style="border-color:var(--hairline)">Subscribe</a>
+    </div>
+  </div>
+</header>
 
-  <main>
-    <section class="hero wrap">
-      <p class="kicker">§ 00 · Site status</p>
-      <h1>
-        Built flat.
-        <span class="serif">Under construction.</span>
-      </h1>
-      <p class="lede">
-        This site intentionally ships with no middle tier and no backend.
-        Every page here is static content prepared for GitHub Pages while we build the full editorial catalog.
-      </p>
-      <div class="status-panel" role="status" aria-live="polite">
-        <p class="status-label">Current release mode</p>
-        <p class="status-value">Construction preview</p>
-        <p class="status-sub">Static pages only · no APIs · no dynamic rendering</p>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__top">
+      <div>Issue No. 047 — Q2 / 2026</div>
+      <div class="nums">
+        <span>312 items curated</span>
+        <span>•</span>
+        <span>No sponsored picks</span>
       </div>
-    </section>
-
-    <section class="caution-strip" aria-label="Under construction indicator">
-      <div class="marquee">
-        UNDER CONSTRUCTION · STATIC GITHUB PAGES BUILD · UNDER CONSTRUCTION · STATIC GITHUB PAGES BUILD ·
+    </div>
+    <div class="hero__main">
+      <div>
+        <h1>
+          Everyday carry<br>
+          for the <span class="em" data-tagline-em>modern</span><br>
+          professional.
+        </h1>
+        <p class="hero__lede" data-tagline-sub>
+          A curated guide to the gadgets, tools, and backpack essentials that help office professionals work smarter — minus the gimmicks, the affiliate sludge, and the listicles you'll never finish reading.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--accent" href="category.html">
+            Browse the carry
+            <svg class="i arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#latest" style="border-color:var(--hairline)">
+            This week's picks
+          </a>
+        </div>
       </div>
-    </section>
+      <aside class="hero__featured" aria-label="Carry of the week">
+        <div class="ph ph--accent" style="aspect-ratio: 5/4;">
+          <div class="ph__label">product · carry of the week</div>
+        </div>
+        <div class="meta">
+          <div class="row1">
+            <span>★ Carry of the Week</span>
+            <span>W. 19 / 26</span>
+          </div>
+          <h3>Bellroy Tokyo Totepack Compact</h3>
+          <p>The most argued-over commuter bag in our Slack. Survives a 4-day client trip with a 16" laptop and dignity intact.</p>
+          <div class="specs">
+            <div class="spec"><span>Capacity</span><span>14L</span></div>
+            <div class="spec"><span>Weight</span><span>720g</span></div>
+            <div class="spec"><span>Verdict</span><span>9.1/10</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
 
-    <section class="wrap grid">
-      <article class="card">
-        <p class="card-kicker">§ 01 · Catalog</p>
-        <h2>Gear lists and tiering are coming soon.</h2>
-        <p>Product cards, comparison tables, and category roundups are staged and currently offline for editing.</p>
-        <a class="card-link" href="catalog.html">Open placeholder page</a>
-      </article>
-      <article class="card">
-        <p class="card-kicker">§ 02 · Journal</p>
-        <h2>Long-form field notes are in draft.</h2>
-        <p>Editorial articles, carry audits, and tested workflows are being prepared as static pages.</p>
-        <a class="card-link" href="journal.html">Open placeholder page</a>
-      </article>
-      <article class="card">
-        <p class="card-kicker">§ 03 · Platform</p>
-        <h2>No runtime services are connected.</h2>
-        <p>This preview environment is intentionally simple: HTML + CSS only, hosted directly through GitHub Pages.</p>
-        <a class="card-link" href="404.html">View fallback page</a>
-      </article>
-    </section>
-  </main>
+<!-- ============ STRIP ============ -->
+<div class="strip" aria-hidden="true">
+  <div class="strip__inner">
+    <span><span class="dot"></span> Backpack essentials</span>
+    <span><span class="dot"></span> Desk upgrades</span>
+    <span><span class="dot"></span> Time-saving tools</span>
+    <span><span class="dot"></span> Meeting & presentation gear</span>
+    <span><span class="dot"></span> Business travel kit</span>
+    <span><span class="dot"></span> Gift guides for professionals</span>
+    <span><span class="dot"></span> Backpack essentials</span>
+    <span><span class="dot"></span> Desk upgrades</span>
+    <span><span class="dot"></span> Time-saving tools</span>
+    <span><span class="dot"></span> Meeting & presentation gear</span>
+    <span><span class="dot"></span> Business travel kit</span>
+    <span><span class="dot"></span> Gift guides for professionals</span>
+  </div>
+</div>
 
-  <footer class="site-footer wrap">
-    <p>Corporate Carry · Static build in progress.</p>
-  </footer>
+<!-- ============ CATEGORIES ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta">
+        <span class="kicker">§ 01 · Categories</span>
+        <h2 class="h2">Six pillars of the workday carry.</h2>
+      </div>
+      <a href="#" class="link">View full taxonomy <span>↗</span></a>
+    </div>
+    <div class="cats">
+      <a class="cat" href="category.html">
+        <div>
+          <div class="cat__num">01 · 84 items</div>
+          <div class="cat__viz">
+            <svg viewBox="0 0 80 64" width="100%" height="64" fill="none" stroke="currentColor" stroke-width="1.4">
+              <path d="M16 18 v32 a4 4 0 0 0 4 4 h40 a4 4 0 0 0 4 -4 v-32"/>
+              <path d="M26 18 v-4 a6 6 0 0 1 6 -6 h16 a6 6 0 0 1 6 6 v4"/>
+              <path d="M16 28 h48"/>
+              <circle cx="40" cy="36" r="2.5"/>
+            </svg>
+          </div>
+          <h3 class="cat__title">Backpack essentials</h3>
+          <p class="cat__desc">The chargers, cables, pouches, and EDC tools that quietly make every workday easier.</p>
+        </div>
+        <div class="cat__foot"><span>Browse</span><span class="arr">→</span></div>
+      </a>
+
+      <a class="cat" href="#">
+        <div>
+          <div class="cat__num">02 · 62 items</div>
+          <div class="cat__viz">
+            <svg viewBox="0 0 80 64" width="100%" height="64" fill="none" stroke="currentColor" stroke-width="1.4">
+              <rect x="12" y="14" width="56" height="28" rx="1.5"/>
+              <path d="M38 42 v8 M30 50 h20"/>
+              <rect x="20" y="20" width="16" height="10" rx="0.5"/>
+              <path d="M44 22 h18 M44 28 h18 M44 34 h12"/>
+            </svg>
+          </div>
+          <h3 class="cat__title">Desk & office upgrades</h3>
+          <p class="cat__desc">Docks, monitor lights, ergonomic kit — small additions that compound across a week.</p>
+        </div>
+        <div class="cat__foot"><span>Browse</span><span class="arr">→</span></div>
+      </a>
+
+      <a class="cat" href="#">
+        <div>
+          <div class="cat__num">03 · 41 items</div>
+          <div class="cat__viz">
+            <svg viewBox="0 0 80 64" width="100%" height="64" fill="none" stroke="currentColor" stroke-width="1.4">
+              <circle cx="40" cy="32" r="20"/>
+              <path d="M40 18 v14 l10 6"/>
+              <path d="M40 8 v3 M40 53 v3 M62 32 h3 M15 32 h3"/>
+            </svg>
+          </div>
+          <h3 class="cat__title">Time-saving tools</h3>
+          <p class="cat__desc">Gadgets, automations, and quiet workflow upgrades that reduce friction in the day.</p>
+        </div>
+        <div class="cat__foot"><span>Browse</span><span class="arr">→</span></div>
+      </a>
+
+      <a class="cat" href="#">
+        <div>
+          <div class="cat__num">04 · 38 items</div>
+          <div class="cat__viz">
+            <svg viewBox="0 0 80 64" width="100%" height="64" fill="none" stroke="currentColor" stroke-width="1.4">
+              <rect x="14" y="12" width="52" height="32" rx="2"/>
+              <path d="M14 38 h52"/>
+              <circle cx="40" cy="26" r="6"/>
+              <path d="M28 50 h24 M34 44 v6 M46 44 v6"/>
+            </svg>
+          </div>
+          <h3 class="cat__title">Meeting & presentation</h3>
+          <p class="cat__desc">Clickers, mics, webcams, and notebooks for conference rooms, calls, and clients.</p>
+        </div>
+        <div class="cat__foot"><span>Browse</span><span class="arr">→</span></div>
+      </a>
+
+      <a class="cat" href="#">
+        <div>
+          <div class="cat__num">05 · 56 items</div>
+          <div class="cat__viz">
+            <svg viewBox="0 0 80 64" width="100%" height="64" fill="none" stroke="currentColor" stroke-width="1.4">
+              <rect x="22" y="14" width="36" height="40" rx="3"/>
+              <path d="M30 14 v-3 a2 2 0 0 1 2 -2 h16 a2 2 0 0 1 2 2 v3"/>
+              <path d="M22 30 h36 M30 22 v8 M50 22 v8"/>
+            </svg>
+          </div>
+          <h3 class="cat__title">Business travel kit</h3>
+          <p class="cat__desc">Adapters, packing systems, and headphones for life between office, airport, and hotel.</p>
+        </div>
+        <div class="cat__foot"><span>Browse</span><span class="arr">→</span></div>
+      </a>
+
+      <a class="cat" href="#">
+        <div>
+          <div class="cat__num">06 · 31 items</div>
+          <div class="cat__viz">
+            <svg viewBox="0 0 80 64" width="100%" height="64" fill="none" stroke="currentColor" stroke-width="1.4">
+              <rect x="18" y="22" width="44" height="28" rx="1"/>
+              <path d="M40 22 v28 M18 30 h44"/>
+              <path d="M30 22 c-4 -4 -2 -10 4 -10 c4 0 6 4 6 10"/>
+              <path d="M50 22 c4 -4 2 -10 -4 -10 c-4 0 -6 4 -6 10"/>
+            </svg>
+          </div>
+          <h3 class="cat__title">Gift guides</h3>
+          <p class="cat__desc">Curated lists for consultants, remote workers, new hires, and clients you actually like.</p>
+        </div>
+        <div class="cat__foot"><span>Browse</span><span class="arr">→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LATEST ============ -->
+<section class="section" id="latest" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta">
+        <span class="kicker">§ 02 · Latest roundups</span>
+        <h2 class="h2">Recently put through a real workweek.</h2>
+      </div>
+      <a href="#" class="link">All articles <span>↗</span></a>
+    </div>
+    <div class="articles">
+      <a class="article-card feat" href="article.html">
+        <div class="ph">
+          <div class="ph__label">editorial · hero shot</div>
+        </div>
+        <div class="meta-row">
+          <span class="chip chip--accent"><span class="dot"></span> Feature</span>
+          <span>Backpack</span>
+          <span>·</span>
+          <span>12 min read</span>
+        </div>
+        <h3>The hybrid worker's backpack setup, tested across 14 cities.</h3>
+        <p>What 9 months of train rides, client offices, hotel desks, and one regrettable layover taught us about the bag that actually earns its straps.</p>
+      </a>
+
+      <a class="article-card" href="#">
+        <div class="ph">
+          <div class="ph__label">product · group shot</div>
+        </div>
+        <div class="meta-row">
+          <span>Desk</span>
+          <span>·</span>
+          <span>8 min read</span>
+        </div>
+        <h3>Eleven desk gadgets that actually make you more productive (and nine that don't).</h3>
+        <p>An honest sort of the dock, lamp, and stand pile-up — what we kept after the novelty wore off.</p>
+      </a>
+
+      <a class="article-card" href="#">
+        <div class="ph">
+          <div class="ph__label">product · flat lay</div>
+        </div>
+        <div class="meta-row">
+          <span>Meetings</span>
+          <span>·</span>
+          <span>6 min read</span>
+        </div>
+        <h3>The consultant's clean-laptop kit: six items, one zip pouch.</h3>
+        <p>Everything you need to walk into a client site looking deeply prepared without overpacking.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDITOR'S CARRIES ============ -->
+<section class="section" style="background: var(--surface); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta">
+        <span class="kicker">§ 03 · What's in their bag</span>
+        <h2 class="h2">Editor's carries.</h2>
+      </div>
+      <a href="#" class="link">All carries <span>↗</span></a>
+    </div>
+    <div class="picks">
+      <article class="pick">
+        <div class="ph pick__ph"><div class="ph__label">flat-lay · bag</div></div>
+        <div>
+          <span class="chip chip--outline">Senior PM · 4 yrs hybrid</span>
+          <h3 class="pick__title">Maya R. — Aer Day Sling 3, packed for office days.</h3>
+          <div class="pick__by">Edited Apr 28 · 8 items · 1.4 kg</div>
+          <ul class="pick__list">
+            <li><span>13" MacBook Air</span><span class="n">1.24 kg</span></li>
+            <li><span>Roost laptop stand</span><span class="n">170 g</span></li>
+            <li><span>Anker 65W charger</span><span class="n">95 g</span></li>
+            <li><span>Bellroy tech pouch</span><span class="n">220 g</span></li>
+            <li><span>Field Notes + Lamy pen</span><span class="n">42 g</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="pick">
+        <div class="ph pick__ph"><div class="ph__label">flat-lay · bag</div></div>
+        <div>
+          <span class="chip chip--outline">Strategy consultant · weekly flier</span>
+          <h3 class="pick__title">Ben C. — Tom Bihn Synik 22 for a 4-day client week.</h3>
+          <div class="pick__by">Edited May 02 · 14 items · 6.8 kg</div>
+          <ul class="pick__list">
+            <li><span>16" MacBook Pro + sleeve</span><span class="n">2.41 kg</span></li>
+            <li><span>Sony WH-1000XM5</span><span class="n">250 g</span></li>
+            <li><span>Anker Prime 100W bank</span><span class="n">348 g</span></li>
+            <li><span>Compact umbrella</span><span class="n">175 g</span></li>
+            <li><span>Notion + Remarkable Paper</span><span class="n">403 g</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="section" id="sub">
+  <div class="wrap">
+    <div class="sub">
+      <div style="position:relative; z-index:1;">
+        <span class="kicker" style="color: color-mix(in srgb, var(--bg) 55%, transparent);">§ 04 · The Friday Carry</span>
+        <h2 style="margin-top:12px;">One useful thing.<br>Every Friday.</h2>
+        <p>A short note from the editors with the single best item we touched this week, why it matters, and where to get it. No tracking links, no 25-item lists.</p>
+        <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓';">
+          <input type="email" placeholder="you@company.com" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="perks">
+          <div><span class="dot"></span> 12,400 readers</div>
+          <div><span class="dot"></span> Unsubscribe in one click</div>
+          <div><span class="dot"></span> Never sold, never shared</div>
+        </div>
+      </div>
+      <div class="stat-stack">
+        <div class="stat">
+          <div class="n">312</div>
+          <div class="l">Items in active rotation</div>
+        </div>
+        <div class="stat">
+          <div class="n">1,847</div>
+          <div class="l">Items tested & rejected</div>
+        </div>
+        <div class="stat">
+          <div class="n">0</div>
+          <div class="l">Sponsored placements, ever</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="logo" style="margin-bottom: 18px;">
+          <div class="logo-mark">CC</div>
+          <span>Corporate Carry</span>
+        </div>
+        <p style="font-size:14px; color:var(--ink-soft); max-width:32ch; line-height:1.5;">
+          A curated guide to the gadgets, tools, and everyday essentials that help modern office professionals work smarter, stay organized, and carry better.
+        </p>
+      </div>
+      <div>
+        <h5>Categories</h5>
+        <ul>
+          <li><a href="category.html">Backpack essentials</a></li>
+          <li><a href="#">Desk &amp; office</a></li>
+          <li><a href="#">Time-saving tools</a></li>
+          <li><a href="#">Meeting &amp; presentation</a></li>
+          <li><a href="#">Business travel</a></li>
+          <li><a href="#">Gift guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Editorial</h5>
+        <ul>
+          <li><a href="#">How we review</a></li>
+          <li><a href="#">Editor's carries</a></li>
+          <li><a href="#">The Friday Carry</a></li>
+          <li><a href="#">Methodology</a></li>
+          <li><a href="#">Reader submissions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>About</h5>
+        <ul>
+          <li><a href="#">Manifesto</a></li>
+          <li><a href="#">Independence</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Corporate Carry. Made for people with too many tabs open.</span>
+      <span>v.2.4 — Issue 047</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ Tweaks ============ -->
+<script>
+  window.__TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#a16207",
+    "bg": "#1c1714",
+    "tagline": "modern",
+    "density": "compact",
+    "showGrain": true,
+    "headlineStyle": "italic-serif"
+  }/*EDITMODE-END*/;
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks-app.jsx"></script>
+
 </body>
 </html>
