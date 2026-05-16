@@ -1,0 +1,15 @@
+styles.css:.nav a:hover { background: var(--bg-soft); color: var(--ink); }
+styles.css:.nav a.active { background: var(--ink); color: var(--bg); }
+styles.css:.iconbtn:hover { border-color: var(--ink); color: var(--ink); }
+styles.css:.btn:hover { background: var(--ink-2); transform: translateY(-1px); }
+styles.css:.btn--ghost { background: transparent; color: var(--ink); }
+styles.css:.btn--ghost:hover { background: var(--bg-soft); transform: none; }
+styles.css:.btn--accent { background: var(--accent); border-color: var(--accent); color: #fffdf6; }
+styles.css:.btn--accent:hover { background: var(--accent-2); border-color: var(--accent-2); }
+styles.css:.chip--accent { background: var(--accent-tint); color: var(--accent-2); }
+styles.css:.chip--outline { background: transparent; border-color: var(--hairline); }
+styles.css:.chip--ink { background: var(--ink); color: var(--bg); }
+styles.css:.section-head .link:hover { color: var(--ink); border-color: var(--ink); }
+styles.css:.card:hover { border-color: var(--hairline-2); transform: translateY(-2px); }
+styles.css:.shop a:hover { color: var(--accent); background: var(--accent-tint); }
+styles.css:.site-footer ul a:hover { color: var(--accent); }
