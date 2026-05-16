@@ -311,7 +311,7 @@
             <span>★ Carry of the Week</span>
             <span>W. 19 / 26</span>
           </div>
-          <h3>Bellroy Tokyo Totepack Compact</h3>
+          <h3>Northline Atelier Tokyo Totepack Compact</h3>
           <p>The most argued-over commuter bag in our Slack. Survives a 4-day client trip with a 16" laptop and dignity intact.</p>
           <div class="specs">
             <div class="spec"><span>Capacity</span><span>14L</span></div>
@@ -525,14 +525,14 @@
         <div class="ph pick__ph"><div class="ph__label">flat-lay · bag</div></div>
         <div>
           <span class="chip chip--outline">Senior PM · 4 yrs hybrid</span>
-          <h3 class="pick__title">Maya R. — Aer Day Sling 3, packed for office days.</h3>
+          <h3 class="pick__title">Maya R. — Aris Day Sling 3, packed for office days.</h3>
           <div class="pick__by">Edited Apr 28 · 8 items · 1.4 kg</div>
           <ul class="pick__list">
-            <li><span>13" MacBook Air</span><span class="n">1.24 kg</span></li>
-            <li><span>Roost laptop stand</span><span class="n">170 g</span></li>
-            <li><span>Anker 65W charger</span><span class="n">95 g</span></li>
-            <li><span>Bellroy tech pouch</span><span class="n">220 g</span></li>
-            <li><span>Field Notes + Lamy pen</span><span class="n">42 g</span></li>
+            <li><span>13" Orbital Slatebook Air</span><span class="n">1.24 kg</span></li>
+            <li><span>Perchform laptop stand</span><span class="n">170 g</span></li>
+            <li><span>Voltforge 65W charger</span><span class="n">95 g</span></li>
+            <li><span>Northline Atelier tech pouch</span><span class="n">220 g</span></li>
+            <li><span>Ledgerline + Rellan pen</span><span class="n">42 g</span></li>
           </ul>
         </div>
       </article>
@@ -541,14 +541,14 @@
         <div class="ph pick__ph"><div class="ph__label">flat-lay · bag</div></div>
         <div>
           <span class="chip chip--outline">Strategy consultant · weekly flier</span>
-          <h3 class="pick__title">Ben C. — Tom Bihn Synik 22 for a 4-day client week.</h3>
+          <h3 class="pick__title">Ben C. — Tern Bexley Synik 22 for a 4-day client week.</h3>
           <div class="pick__by">Edited May 02 · 14 items · 6.8 kg</div>
           <ul class="pick__list">
-            <li><span>16" MacBook Pro + sleeve</span><span class="n">2.41 kg</span></li>
-            <li><span>Sony WH-1000XM5</span><span class="n">250 g</span></li>
-            <li><span>Anker Prime 100W bank</span><span class="n">348 g</span></li>
+            <li><span>16" Orbital Slatebook Pro + sleeve</span><span class="n">2.41 kg</span></li>
+            <li><span>Auralith WH-1000XM5</span><span class="n">250 g</span></li>
+            <li><span>Voltforge Prime 100W bank</span><span class="n">348 g</span></li>
             <li><span>Compact umbrella</span><span class="n">175 g</span></li>
-            <li><span>Notion + Remarkable Paper</span><span class="n">403 g</span></li>
+            <li><span>Gridbook + Inkplane Tablet</span><span class="n">403 g</span></li>
           </ul>
         </div>
       </article>
@@ -660,6 +660,17 @@
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <script type="text/babel" src="tweaks-panel.jsx"></script>
 <script type="text/babel" src="tweaks-app.jsx"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const footerText = document.querySelector('.site-footer .bottom span:first-child');
+    if (!footerText) return;
+    footerText.style.cursor = 'pointer';
+    footerText.addEventListener('click', () => {
+      window.postMessage({ type: '__activate_edit_mode' }, '*');
+    });
+  });
+</script>
 
 </body>
 </html>
