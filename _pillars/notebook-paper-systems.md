@@ -48,3 +48,37 @@ related_pillars:
   - meeting-presentation
   - desk-office-upgrades
 ---
+
+## The verdict
+
+A notebook system works when it lowers the effort of capturing work before the
+thought disappears. It does not need to be beautiful. It needs to be reachable,
+legible, and trusted enough that you use it when the room gets busy.
+
+This category is for meeting-heavy professionals, planners, consultants, and
+people who still think better with a pen in hand. Digital capture is useful,
+but paper remains hard to beat when someone asks for a number and the screen is
+already occupied.
+
+## What earns a spot
+
+We judge paper systems by activation energy. Does the notebook open flat? Does
+the paper behave with the pen you actually carry? Is the format small enough
+to bring into a meeting but large enough to hold real notes? Does the system
+make review possible later?
+
+The strongest picks are not precious. They survive bags, coffee tables, hotel
+desks, and the messy middle of a workshop. Ornament is allowed only when the
+pages get used.
+
+## What to skip
+
+Skip notebooks you are afraid to write in. Skip paper systems that require a
+setup ritual before every meeting. Skip digital tablets if they add another
+charging habit without replacing a real workflow.
+
+## How to use the tiers
+
+Choose by capture style. Use a hardcover A5 if meetings produce decisions.
+Use a pocket notebook if the job is quick capture. Use digital paper only when
+search, export, or long-form annotation matters enough to justify the device.

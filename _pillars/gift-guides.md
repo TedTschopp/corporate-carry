@@ -46,3 +46,35 @@ related_pillars:
   - notebook-paper-systems
   - desk-office-upgrades
 ---
+
+## The verdict
+
+The best professional gifts are useful, specific, and easy to receive. They
+solve a workday problem without asking the recipient to maintain an ecosystem,
+learn a new ritual, or pretend enthusiasm for desk sculpture.
+
+This category is for new hires, consultants, remote workers, client teams, and
+managers who want to give something competent. A good work gift should feel
+like relief, not homework.
+
+## What earns a spot
+
+We look for gifts that can enter a real workday immediately: a charger that
+reduces cable clutter, a pouch that makes a bag cleaner, a notebook that gets
+used, or a pen that writes every time. Size matters. So does taste neutrality.
+The safer gift is often the better gift.
+
+Price is not the signal here. Fit is. A $24 writing tool can be better than a
+$200 object that creates a support request.
+
+## What to skip
+
+Skip anything with sizing, strong fragrance, fragile personal taste, or a setup
+burden. Skip gifts that imply the recipient should change their whole system.
+Good professional gifts meet the workday where it already is.
+
+## How to use the tiers
+
+Choose by recipient context. New hires need reliable basics. Consultants need
+bag discipline. Remote workers need desk tools that do not take over the room.
+Clients need something useful enough to keep and simple enough to accept.

@@ -33,9 +33,40 @@ alternatives: [rellan-safari-rollerball]
 recommended_with: [ledgerline-notebook]
 appears_in: [maya-reyes-office-days, consultants-clean-laptop-kit]
 status: reference
-source_notes: Seeded from the homepage editor carry card and article pouch system.
 blurb: The basic pen that belongs in a meeting pouch because one working pen beats three aspirational ones.
 limitation: Less comfortable for long sessions than the Safari Rollerball.
 ---
 
-Carry one. Replace it when it stops writing. There is no need to make this harder.
+## Verdict
+
+The Rellan pen is the basic meeting-pouch answer. It is not the nicest writing
+instrument in the catalog, and that is fine. One working pen beats three
+aspirational ones at the bottom of a bag.
+
+## Best for
+
+Use it in a small pouch, office-day sling, or consultant laptop kit where the
+job is quick notes and signatures. Pair it with the Ledgerline notebook when
+the goal is lightweight capture.
+
+## What it solves
+
+The problem is not pen enthusiasm. The problem is not having a working pen
+when someone asks for one. This solves that without making the kit feel like a
+stationery collection.
+
+## What worked
+
+At 18 g, it disappears into a meeting pouch. The black ink is ordinary in the
+best way: appropriate for forms, notes, markups, and table work.
+
+## What did not
+
+It is less comfortable for long writing sessions than the Safari Rollerball.
+If you take pages of handwritten meeting notes, upgrade. If you need a reliable
+backup, stay here.
+
+## Final call
+
+Carry one. Replace it when it stops writing. There is no need to make this
+harder.

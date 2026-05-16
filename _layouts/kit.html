@@ -20,6 +20,15 @@ layout: default
   </div>
 </section>
 
+{% assign body_content = content | strip %}
+{% if body_content != "" %}
+<section class="item-body">
+  <div class="wrap-narrow">
+    {{ content }}
+  </div>
+</section>
+{% endif %}
+
 <section class="section">
   <div class="wrap">
     <div class="picks">

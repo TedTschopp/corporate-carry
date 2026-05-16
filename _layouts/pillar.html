@@ -8,6 +8,14 @@ layout: default
 {% assign words = pillar.title | split: " " %}
 {% assign last_word = words | last %}
 {% assign first_word_count = words.size | minus: 1 %}
+{% capture editorial_content %}
+  {% if page.pillar_slug and pillar.content %}
+    {{ pillar.content }}
+  {% else %}
+    {{ content }}
+  {% endif %}
+{% endcapture %}
+{% assign editorial_content_stripped = editorial_content | strip %}
 
 <section class="cat-hero">
   <div class="wrap">
@@ -50,6 +58,14 @@ layout: default
     </div>
   </div>
 </section>
+
+{% if editorial_content_stripped != "" %}
+<section class="item-body">
+  <div class="wrap-narrow">
+    {{ editorial_content }}
+  </div>
+</section>
+{% endif %}
 
 <div class="wrap">
   <div class="filters">

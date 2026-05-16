@@ -46,3 +46,36 @@ related_pillars:
   - pen-pencil
   - notebook-paper-systems
 ---
+
+## The verdict
+
+Meeting gear is judged by pressure. It has to work quickly, look quiet, and
+prevent awkwardness when other people are watching. The best tools here are
+not dramatic. They keep the room from becoming the story.
+
+This category is for consultants, presenters, managers, and anyone who moves
+between conference rooms, client sites, and calls. If your meetings are mostly
+at one desk with known equipment, keep the kit small.
+
+## What earns a spot
+
+We look for reliability under visible conditions: a pen that starts, earbuds
+that can handle a sudden call, and a hub that recovers from the monitor or
+projector you did not choose. Setup speed matters because a room full of
+people makes small failures feel larger.
+
+Good meeting gear should be professional without calling attention to itself.
+The item succeeds when nobody notices it and the meeting starts on time.
+
+## What to skip
+
+Skip anything that requires rehearsal unless the meeting is actually a
+presentation. A clicker belongs in a keynote kit, not every client pouch. A
+microphone belongs in a recording setup, not a normal conference room carry.
+Useful is not the same as necessary.
+
+## How to use the tiers
+
+Start with the failure modes you see weekly: bad audio, no pen, port mismatch,
+or a room screen that refuses to cooperate. Buy for those first. Add dedicated
+presentation tools only when your calendar proves you need them.

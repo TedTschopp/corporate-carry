@@ -46,3 +46,36 @@ related_pillars:
   - backpack-essentials
   - business-travel-kit
 ---
+
+## The verdict
+
+A time-saving tool earns a spot only when it removes a repeated task. If it
+needs babysitting, charging, syncing, updating, or explaining, it is probably
+moving the work instead of reducing it.
+
+This category is for professionals with repeat friction: the same cable search
+every morning, the same adapter scramble in conference rooms, the same slow
+desk setup at every hotel. The point is not to optimize everything. The point
+is to remove the few annoyances that keep coming back.
+
+## What earns a spot
+
+We favor tools that make a recurring action simpler: one charger instead of a
+drawer of bricks, one cable that stays paired, one hub that solves the room,
+one pouch that makes the kit visible. The best time-saving tools are physical
+defaults, not clever dashboards.
+
+The test is frequency. A tool used 4 days a week can earn space even if it is
+plain. A tool used twice a quarter needs to prevent a meaningful failure.
+
+## What to skip
+
+Skip anything bought because the idea sounds efficient. Automation props,
+focus toys, overbuilt docks, and duplicate chargers can all create a second
+operating model. That is where this category breaks.
+
+## How to use the tiers
+
+Begin with the tool that removes the most repeated friction from your week.
+Then stop. The fastest setup is usually the one with fewer objects, clearer
+places, and no decision tree before the first call.

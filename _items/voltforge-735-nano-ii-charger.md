@@ -36,9 +36,44 @@ alternatives: [voltforge-prime-100w-power-bank]
 recommended_with: [threadline-powerknit-usb-c-cable, voltforge-555-usb-c-hub]
 appears_in: [hybrid-worker-backpack-setup, consultants-clean-laptop-kit]
 status: active
-source_notes: Seeded from the static category and article pages during the Jekyll migration.
 blurb: The "I forgot mine" problem solved by something the size of a stack of business cards. Charges a 14" laptop, phone, and earbuds at once.
 limitation: Not the charger for power-hungry 16" laptop days.
 ---
 
-Replaces the charger pile with one 95 g brick. It earns the spot because it solves a weekly problem without adding bulk.
+## Verdict
+
+The Voltforge 735 Nano II is the small charger most hybrid workers should pack
+first. It gives you 65W, 2 USB-C ports, 1 USB-A port, and a 95 g carry weight,
+which is the right balance for a laptop, phone, and earbuds on normal office
+days.
+
+## Best for
+
+Use it for daily office charging, client visits, conference rooms, and train
+commutes where one wall outlet may be the whole power plan. Pair it with the
+Threadline PowerKnit cable and stop letting cable choice become a morning
+decision.
+
+## What it solves
+
+The failure mode is familiar: laptop charger at home, phone cable in the wrong
+bag, earbuds low before the call. This charger makes the power system one
+small object instead of a scattered collection.
+
+## What worked
+
+The port mix is the practical advantage. Two USB-C ports handle the modern kit,
+while USB-A keeps older room accessories from becoming a problem. The size is
+small enough to live permanently in a tech pouch, which is more important than
+peak output for most workdays.
+
+## What did not
+
+It is not the right charger for heavy 16 inch laptop days. If your machine
+regularly needs more power, carry a larger brick or move to the travel power
+setup. Do not ask this small charger to solve the wrong week.
+
+## Final call
+
+This is the default charger pick because it reduces the kit. Not the most
+powerful option we tracked. The one most people will actually keep packed.

@@ -1,6 +1,6 @@
 ---
 name: corporate-carry-writing-guide
-description: Use this skill when writing, editing, restructuring, or reviewing Corporate Carry editorial content: product reviews, roundups, feature articles, category pages, newsletter issues, product blurbs, headlines, meta descriptions, image captions, and Jekyll post/item front matter. Applies the Corporate Carry voice: practical, selective, workday-realistic, specific, dryly witty, independent, and unsentimental.
+description: Use this skill when writing, editing, restructuring, or reviewing Corporate Carry editorial content. The same core voice applies to product reviews, roundups, feature articles, category pages, newsletter issues, product blurbs, headlines, meta descriptions, image captions, and Jekyll post/item front matter; format-specific sections below define the structural differences.
 user-invocable: true
 ---
 
@@ -33,6 +33,8 @@ If the task is primarily visual UI design, also use the `corporate-carry-design`
 
 Before writing, identify the content type and the decision the reader needs to make.
 
+Apply the core voice, audience, house style, independence, and quality checks to every task. Then use only the structure section that matches the content type: review, roundup, feature, category page, newsletter, product blurb, front matter, caption, or rewrite.
+
 1. **Clarify the job of the piece**
    - Is this a product review, roundup, feature, category page, newsletter, product card, or rewrite?
    - What workday problem is being solved?
@@ -51,12 +53,9 @@ Before writing, identify the content type and the decision the reader needs to m
    - Include tradeoffs.
 
 4. **Write in the house voice**
-   - Plain English.
-   - Short, confident paragraphs.
-   - Specific nouns.
-   - Light dry humor, never performance.
-   - Clear editorial independence.
-   - No hype.
+   - Clarity: plain English, short paragraphs, specific nouns.
+   - Judgment: concrete verdicts, named tradeoffs, clear editorial independence.
+   - Tone: light dry humor when natural, never hype or performance.
 
 5. **Finish with a quality check**
    - Confirm the piece has a verdict.

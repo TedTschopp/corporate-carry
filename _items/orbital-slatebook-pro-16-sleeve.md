@@ -30,10 +30,41 @@ related_items: [tern-bexley-synik-22]
 alternatives: [orbital-slatebook-air-13]
 recommended_with: [tern-bexley-synik-22]
 appears_in: [ben-c-client-week]
-status: reference
-source_notes: Seeded from the homepage editor carry card.
+status: profile
 blurb: Ben's heavier client-week laptop setup.
-limitation: Reference item, not a reviewed pick yet.
+limitation: Necessary for some client weeks, but it forces the rest of the bag to compensate.
 ---
 
-Tracked for kit accuracy and weight math.
+## Verdict
+
+The 16 inch Orbital Slatebook Pro with sleeve is the heavy laptop profile for
+client-week setups. It matters because it sets the weight reality for Ben's
+travel carry before any charger, pouch, or notebook enters the bag.
+
+## Best for
+
+Use this profile when the work requires a larger laptop, heavier compute, or a
+screen that makes hotel-desk work less cramped. It belongs in the Tern Bexley
+Synik 22, not a light office sling.
+
+## What it solves
+
+The failure is pretending a heavy work laptop packs like a lightweight daily
+machine. At 2.41 kg with sleeve, this setup changes the bag decision, the power
+decision, and the amount of other gear you can justify.
+
+## What worked
+
+The sleeve keeps the laptop protected in a travel bag and gives the kit a clear
+weight anchor. That is useful even when the laptop itself is company-issued or
+otherwise not optional.
+
+## What did not
+
+This is not a recommendation to carry more laptop than your work requires. If
+a 13 inch daily machine can do the job, the lighter setup wins quickly.
+
+## Final call
+
+Track the weight honestly. A heavy laptop can be necessary, but the rest of the
+carry has to compensate.

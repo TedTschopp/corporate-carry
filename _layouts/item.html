@@ -13,14 +13,16 @@ layout: default
           <span>{{ page.brand }}</span>
           <span>·</span>
           <span>{{ page.item_type }}</span>
-          {% if page.status %}<span>·</span><span>{{ page.status }}</span>{% endif %}
         </div>
         <h1>{{ page.title }}</h1>
         <p class="lede">{{ page.blurb }}</p>
         <div class="item-specs">
-          <div><span>Price</span><strong>{{ page.sale_price | default: page.price | default: "Reference" }}</strong></div>
+          <div><span>Price</span><strong>{{ page.sale_price | default: page.price | default: "Varies" }}</strong></div>
           <div><span>Weight</span><strong>{{ page.weight | default: "Varies" }}</strong></div>
-          <div><span>Score</span><strong>{% if page.score %}{{ page.score }}/10{% else %}Pending{% endif %}</strong></div>
+          <div>
+            <span>{% if page.score %}Score{% else %}Role{% endif %}</span>
+            <strong>{% if page.score %}{{ page.score }}/10{% else %}Kit profile{% endif %}</strong>
+          </div>
         </div>
         {% if page.limitation %}<p class="muted">Tradeoff: {{ page.limitation }}</p>{% endif %}
         {% if page.retailers %}
@@ -38,7 +40,6 @@ layout: default
 <section class="item-body">
   <div class="wrap-narrow">
     {{ content }}
-    {% if page.source_notes %}<p class="tiny muted">{{ page.source_notes }}</p>{% endif %}
   </div>
 </section>
 

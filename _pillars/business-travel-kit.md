@@ -50,3 +50,42 @@ related_pillars:
   - meeting-presentation
   - time-saving-tools
 ---
+
+## The verdict
+
+Business travel gear earns its place at the handoffs: airport security,
+boarding, client arrival, hotel-desk setup, checkout, and the return flight.
+The useful items reduce friction at those points. The rest just make the bag
+feel more prepared while doing very little work.
+
+This category is for weekly fliers, consultants, conference travelers, and
+anyone whose laptop has to work before the hotel room exists. If you travel
+once a quarter, borrow selectively from this list. Do not rebuild your daily
+bag around airport problems.
+
+## What earns a spot
+
+We favor items that save time under pressure: a bag that opens cleanly at
+security, headphones that turn a gate into usable work time, a 100W power bank
+that keeps a delayed day from becoming a dead-battery day, and a tracker that
+shortens the panic window when a bag goes missing.
+
+The best travel kit is not the largest kit. It is the one that lets you move
+between states without repacking in public. Access matters more than capacity.
+So does knowing exactly where the charger, headphones, and weather gear live.
+
+## What to skip
+
+Skip anything that only feels useful while you are packing. Portable monitors,
+duplicate power banks, and full-size umbrellas can all be good products and
+still be wrong for most client weeks. Every extra object goes through the
+airport, the taxi, the hotel, and your tired hands.
+
+## How to use the tiers
+
+Start with the bag and power system. Add quiet if you fly often. Add a tracker
+if the bag carries work-critical gear. Weather insurance belongs in the kit
+only if it is small enough to stay packed without making every trip heavier.
+
+The final travel kit should make the transitions calmer. If it only makes the
+packing list longer, it did not earn the seat.

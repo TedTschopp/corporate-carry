@@ -103,3 +103,45 @@ related_pillars:
   - meeting-presentation
   - business-travel-kit
 ---
+
+## The verdict
+
+Backpack essentials are the objects that prevent small workday failures
+without turning the bag into a hardware drawer. The best ones are boring in
+use: the charger is always there, the cable is always paired, the pouch opens
+without a search, and the notebook is easy enough to grab before the meeting
+moves on.
+
+This category is for hybrid workers, consultants, and office regulars who move
+between desks often enough that a fixed drawer is not a system. If your work
+bag already feels heavy before lunch, start by removing duplicates before you
+buy anything from this page.
+
+## What earns a spot
+
+We judged backpack essentials by repeat use, weight, setup speed, and whether
+the item helped the rest of the carry behave. A 95 g charger that replaces 3
+old bricks earns a spot. A pouch that makes every cable visible earns a spot.
+A notebook that actually gets opened during meetings earns a spot.
+
+The strongest picks are the ones that reduce decisions. You should not have to
+ask which cable goes with which brick, where the hub went, or whether the pen
+still works. The bag should answer those questions before the workday starts.
+
+## What to skip
+
+Skip anything packed for a rare emergency unless that emergency is expensive.
+A tracker makes sense because a lost work bag is a real failure. A third cable
+usually does not. The same rule applies to oversized bags, spare chargers, and
+gadgets that solve a problem you have only imagined.
+
+## How to use the tiers
+
+Tier 1 is the basic operating model: power, organization, focus, and capture.
+Tier 2 is where you add tools for your actual week: a stand for hot desks, a
+hub for conference rooms, a power bank for client days, or weather insurance
+for commutes.
+
+The final kit should fit your average day, not your worst one. Your worst day
+can borrow from the travel kit. Your everyday bag should stay light enough
+that you still like carrying it on Thursday.
