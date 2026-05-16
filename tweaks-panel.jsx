@@ -451,6 +451,62 @@ function TweakText({ label, value, placeholder, onChange }) {
   );
 }
 
+function __twkParseRgba(value) {
+  const m = String(value || '').trim().match(
+    /^rgba\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(0|1|0?\.\d+)\s*\)$/i,
+  );
+  if (!m) return null;
+  const r = Math.max(0, Math.min(255, Number(m[1])));
+  const g = Math.max(0, Math.min(255, Number(m[2])));
+  const b = Math.max(0, Math.min(255, Number(m[3])));
+  const a = Math.max(0, Math.min(1, Number(m[4])));
+  if ([r, g, b, a].some(Number.isNaN)) return null;
+  return { r, g, b, a };
+}
+
+function __twkHexFromRgb(r, g, b) {
+  const toHex = (n) => Math.max(0, Math.min(255, n)).toString(16).padStart(2, '0');
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+}
+
+function TweakRgba({ label, value, placeholder, fallbackHex = '#a16207', fallbackAlpha = 1, onChange }) {
+  const pickerRef = React.useRef(null);
+  const parsed = __twkParseRgba(value);
+  const hex = parsed ? __twkHexFromRgb(parsed.r, parsed.g, parsed.b) : fallbackHex;
+  const alpha = parsed ? parsed.a : fallbackAlpha;
+
+  const onColorChange = (nextHex) => {
+    const x = nextHex.replace('#', '');
+    const r = parseInt(x.slice(0, 2), 16);
+    const g = parseInt(x.slice(2, 4), 16);
+    const b = parseInt(x.slice(4, 6), 16);
+    const a = Number(alpha.toFixed(2));
+    onChange(`rgba(${r}, ${g}, ${b}, ${a})`);
+  };
+
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <input
+        className="twk-field"
+        type="text"
+        value={value}
+        placeholder={placeholder}
+        onFocus={() => pickerRef.current?.click()}
+        onChange={(e) => onChange(e.target.value)}
+        style={{ flex: 1 }}
+      />
+      <input
+        ref={pickerRef}
+        type="color"
+        className="twk-swatch"
+        value={hex}
+        onChange={(e) => onColorChange(e.target.value)}
+      />
+    </div>
+  );
+}
+
 function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
   const clamp = (n) => {
     if (min != null && n < min) return min;
@@ -564,5 +620,5 @@ function TweakButton({ label, onClick, secondary = false }) {
 Object.assign(window, {
   useTweaks, TweaksPanel, TweakSection, TweakRow,
   TweakSlider, TweakToggle, TweakRadio, TweakSelect,
-  TweakText, TweakNumber, TweakColor, TweakButton,
+  TweakText, TweakRgba, TweakNumber, TweakColor, TweakButton,
 });

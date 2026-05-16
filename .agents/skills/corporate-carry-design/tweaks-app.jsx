@@ -42,6 +42,24 @@ function isDark(h) {
   return lum < 0.4;
 }
 
+function isValidRgba(value) {
+  return /^rgba\(\s*(?:25[0-5]|2[0-4]\d|1?\d?\d)\s*,\s*(?:25[0-5]|2[0-4]\d|1?\d?\d)\s*,\s*(?:25[0-5]|2[0-4]\d|1?\d?\d)\s*,\s*(?:0|1|0?\.\d+)\s*\)$/i.test(String(value || '').trim());
+}
+
+function rgbaAlpha(value, fallback) {
+  const m = String(value || '').trim().match(
+    /^rgba\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*(0|1|0?\.\d+)\s*\)$/i,
+  );
+  if (!m) return fallback;
+  const n = Number(m[1]);
+  return Number.isNaN(n) ? fallback : Math.max(0, Math.min(1, n));
+}
+
+function hexToRgba(hex, alpha) {
+  const [r, g, b] = hexToRGB(hex);
+  return `rgba(${r}, ${g}, ${b}, ${Number(alpha).toFixed(2)})`;
+}
+
 function CCApp() {
   const defaults = window.__TWEAK_DEFAULTS || {
     accent: "#a16207",
@@ -50,6 +68,8 @@ function CCApp() {
     density: "comfortable",
     showGrain: true,
     headlineStyle: "italic-serif",
+    highlightRgba: "rgba(240, 230, 205, 0.9)",
+    overlayBgRgba: "rgba(250, 249, 247, 0.78)",
   };
   const [t, setTweak] = useTweaks(defaults);
 
@@ -59,10 +79,18 @@ function CCApp() {
     const accent = ACCENT_PRESETS[t.accent] || ACCENT_PRESETS["#a16207"];
     const bg = BG_PRESETS[t.bg] || BG_PRESETS["#f6f1e6"];
     const dark = isDark(t.bg);
+    const overlayBg = isValidRgba(t.overlayBgRgba)
+      ? t.overlayBgRgba.trim()
+      : 'rgba(250, 249, 247, 0.78)';
+    const highlightBg = isValidRgba(t.highlightRgba)
+      ? t.highlightRgba.trim()
+      : accent.tint;
 
     root.style.setProperty('--accent', t.accent);
     root.style.setProperty('--accent-2', accent.hover);
     root.style.setProperty('--accent-tint', accent.tint);
+    root.style.setProperty('--cc-highlight-rgba', highlightBg);
+    root.style.setProperty('--twk-bg', overlayBg);
 
     root.style.setProperty('--bg', t.bg);
     root.style.setProperty('--bg-soft', bg.soft);
@@ -108,7 +136,7 @@ function CCApp() {
     } else if (grain) {
       grain.style.display = 'none';
     }
-  }, [t.accent, t.bg, t.density, t.showGrain]);
+  }, [t.accent, t.bg, t.density, t.showGrain, t.highlightRgba, t.overlayBgRgba]);
 
   // Tagline word + sub
   React.useEffect(() => {
@@ -158,7 +186,7 @@ function CCApp() {
           font-weight: 600;
           color: var(--ink);
           letter-spacing: -0.03em;
-          background: var(--accent-tint);
+          background: var(--cc-highlight-rgba, var(--accent-tint));
           padding: 0 0.1em;
           box-decoration-break: clone;
           -webkit-box-decoration-break: clone;
@@ -183,18 +211,47 @@ function CCApp() {
         label="Accent"
         value={t.accent}
         options={Object.keys(ACCENT_PRESETS)}
-        onChange={(v) => setTweak('accent', v)}
+        onChange={(v) => {
+          const next = ACCENT_PRESETS[v] || ACCENT_PRESETS['#a16207'];
+          const alpha = rgbaAlpha(t.highlightRgba, 0.9);
+          setTweak({
+            accent: v,
+            highlightRgba: hexToRgba(next.tint, alpha),
+          });
+        }}
       />
       <TweakColor
         label="Background"
         value={t.bg}
         options={Object.keys(BG_PRESETS)}
-        onChange={(v) => setTweak('bg', v)}
+        onChange={(v) => {
+          const alpha = rgbaAlpha(t.overlayBgRgba, 0.78);
+          setTweak({
+            bg: v,
+            overlayBgRgba: hexToRgba(v, alpha),
+          });
+        }}
       />
       <TweakToggle
         label="Paper grain"
         value={t.showGrain}
         onChange={(v) => setTweak('showGrain', v)}
+      />
+      <TweakRgba
+        label="Highlight RGBA"
+        value={t.highlightRgba || ''}
+        placeholder="rgba(240, 230, 205, 0.9)"
+        fallbackHex={(ACCENT_PRESETS[t.accent] || ACCENT_PRESETS['#a16207']).tint}
+        fallbackAlpha={0.9}
+        onChange={(v) => setTweak('highlightRgba', v)}
+      />
+      <TweakRgba
+        label="Overlay BG RGBA"
+        value={t.overlayBgRgba || ''}
+        placeholder="rgba(250, 249, 247, 0.78)"
+        fallbackHex={t.bg || '#f6f1e6'}
+        fallbackAlpha={0.78}
+        onChange={(v) => setTweak('overlayBgRgba', v)}
       />
 
       <TweakSection label="Headline" />
