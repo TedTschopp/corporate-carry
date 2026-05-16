@@ -1,7 +1,7 @@
 title: Corporate Carry
 description: A curated guide to the gadgets, tools, and everyday essentials that help modern office professionals work smarter, stay organized, and carry better.
-url: "https://tedtschopp.github.io"
-baseurl: "/corporate-carry"
+url: "https://corporatecarry.com"
+baseurl: ""
 timezone: America/New_York
 markdown: kramdown
 permalink: /articles/:title/
