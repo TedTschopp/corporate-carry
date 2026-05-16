@@ -1,0 +1,48 @@
+---
+layout: default
+---
+<section class="cat-hero">
+  <div class="wrap">
+    {% include breadcrumb.html current="Journal" %}
+    <div class="cat-hero__main">
+      <div>
+        <span class="kicker kicker--accent">§ Journal</span>
+        <h1 style="margin-top:14px;">Field notes, <span class="em">edited.</span></h1>
+        <p class="desc">The dated article index for reviews, roundups, carry stories, and the working methodology behind the current issue.</p>
+      </div>
+      <div class="cat-stats">
+        <div class="stat-row"><span class="l">Published posts</span><span class="v">{{ site.posts.size }}</span></div>
+        <div class="stat-row"><span class="l">Authors</span><span class="v">2</span></div>
+        <div class="stat-row"><span class="l">Issue</span><span class="v">{{ site.data.site.issue.number }}</span></div>
+        <div class="stat-row"><span class="l">Updated</span><span class="v">May 16, 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta">
+        <span class="kicker">§ 01 · Articles</span>
+        <h2 class="h2">Recently tested.</h2>
+      </div>
+    </div>
+    <div class="journal-list">
+      {% for post in site.posts %}{% include article-card.html post=post featured=false %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="intro-band" id="methodology">
+  <div class="wrap">
+    <div class="intro-band__grid">
+      <div><span class="kicker">Methodology</span></div>
+      <div>
+        <p>We favor repeated use over novelty. Items are kept when they solve a recurring workday problem, reduce clutter, and survive normal office, travel, and client-site conditions.</p>
+        <p id="independence">Corporate Carry does not sell sponsored placements. Retailer links stay quiet because the recommendation should do the work.</p>
+        <p id="submissions">Reader submissions are reviewed for useful constraints: role, commute, travel frequency, bag weight, and what was removed.</p>
+      </div>
+    </div>
+  </div>
+</section>

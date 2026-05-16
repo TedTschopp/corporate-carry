@@ -1,0 +1,10 @@
+{% assign pillar = include.pillar %}
+<a class="cat" href="{{ pillar.url | relative_url }}">
+  <div>
+    <div class="cat__num">{% if pillar.order < 10 %}0{% endif %}{{ pillar.order }} · {{ pillar.item_count }} items</div>
+    <div class="cat__viz">{% include pillar-icon.html icon=pillar.icon %}</div>
+    <h3 class="cat__title">{{ pillar.title }}</h3>
+    <p class="cat__desc">{{ pillar.description }}</p>
+  </div>
+  <div class="cat__foot"><span>Browse</span><span class="arr">→</span></div>
+</a>

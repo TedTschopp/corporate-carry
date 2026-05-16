@@ -1,0 +1,63 @@
+---
+layout: default
+---
+<main class="item-page">
+  <div class="wrap">
+    {% include breadcrumb.html parent_label="Items" parent_url="/catalog.html#items" current=page.title %}
+    <div class="item-page__grid">
+      <div class="item-page__media">
+        {% include placeholder-media.html media=page.media label=page.media.placeholder_label %}
+      </div>
+      <div class="item-page__body">
+        <div class="meta">
+          <span>{{ page.brand }}</span>
+          <span>·</span>
+          <span>{{ page.item_type }}</span>
+          {% if page.status %}<span>·</span><span>{{ page.status }}</span>{% endif %}
+        </div>
+        <h1>{{ page.title }}</h1>
+        <p class="lede">{{ page.blurb }}</p>
+        <div class="item-specs">
+          <div><span>Price</span><strong>{{ page.sale_price | default: page.price | default: "Reference" }}</strong></div>
+          <div><span>Weight</span><strong>{{ page.weight | default: "Varies" }}</strong></div>
+          <div><span>Score</span><strong>{% if page.score %}{{ page.score }}/10{% else %}Pending{% endif %}</strong></div>
+        </div>
+        {% if page.limitation %}<p class="muted">Tradeoff: {{ page.limitation }}</p>{% endif %}
+        {% if page.retailers %}
+        <div class="shop">
+          {% for retailer in page.retailers %}
+          <a href="{{ retailer.url }}">{{ retailer.name }}</a>{% unless forloop.last %}<span class="sep">·</span>{% endunless %}
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</main>
+
+<section class="item-body">
+  <div class="wrap-narrow">
+    {{ content }}
+    {% if page.source_notes %}<p class="tiny muted">{{ page.source_notes }}</p>{% endif %}
+  </div>
+</section>
+
+{% if page.recommended_with and page.recommended_with.size > 0 %}
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta">
+        <span class="kicker">§ Related kit</span>
+        <h2 class="h2">Recommended with this item.</h2>
+      </div>
+    </div>
+    <div class="products-grid">
+      {% for slug in page.recommended_with %}
+        {% assign item_matches = site.items | where: "slug", slug %}
+        {% assign item = item_matches | first %}
+        {% include product-card.html item=item index=forloop.index %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

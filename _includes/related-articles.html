@@ -1,0 +1,18 @@
+<section class="rel-articles">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta">
+        <span class="kicker">§ Keep reading</span>
+        <h2 class="h2">Adjacent reads.</h2>
+      </div>
+      <a href="{{ '/journal.html' | relative_url }}" class="link">All features <span>↗</span></a>
+    </div>
+    <div class="grid">
+      {% for slug in include.posts %}
+        {% assign related_matches = site.posts | where: "slug", slug %}
+        {% assign related = related_matches | first %}
+        {% if related %}{% include article-card.html post=related featured=false %}{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

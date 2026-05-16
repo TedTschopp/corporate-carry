@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=../schemas/site-data.schema.json
+issue:
+  number: "047"
+  label: Issue No. 047
+  quarter: Q2 / 2026
+  week: W. 19 / 26
+version: v.2.4
+homepage:
+  curated_count: 312
+  rejected_count: 1847
+  sponsorship_claim: No sponsored picks
+  hero:
+    headline_prefix: Everyday carry
+    emphasis: modern
+    headline_suffix: professional.
+    lede: A curated guide to the gadgets, tools, and backpack essentials that help office professionals work smarter without the gimmicks, affiliate sludge, or lists you will never finish reading.
+    featured_item: northline-atelier-tokyo-totepack-compact
+    featured_label: product · carry of the week
+  categories_heading: Eight pillars of the workday carry.
+  latest_heading: Recently put through a real workweek.
+  carries_heading: Editor's carries.
+footer_tagline: A curated guide to the gadgets, tools, and everyday essentials that help modern office professionals work smarter, stay organized, and carry better.
+copyright: "© 2026 Corporate Carry. Made for people with too many tabs open."
+newsletter_reader_count: 12400
+tweaks:
+  accent: "#a16207"
+  bg: "#f6f1e6"
+  tagline: modern
+  density: comfortable
+  showGrain: true
+  headlineStyle: italic-serif

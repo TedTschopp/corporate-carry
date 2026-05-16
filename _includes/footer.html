@@ -1,0 +1,33 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="logo" href="{{ '/' | relative_url }}" style="margin-bottom: 18px;">
+          <div class="logo-mark">CC</div>
+          <span>Corporate Carry</span>
+        </a>
+        <p style="font-size:14px; color:var(--ink-soft); max-width:32ch; line-height:1.5;">{{ site.data.site.footer_tagline }}</p>
+      </div>
+      {% for group in site.data.navigation.footer_groups %}
+      <div>
+        <h5>{{ group.title }}</h5>
+        <ul>
+          {% for link in group.links %}
+            {% assign href = link.url %}
+            {% if link.pillar %}
+              {% assign footer_matches = site.pillars | where: "slug", link.pillar %}
+              {% assign footer_pillar = footer_matches | first %}
+              {% assign href = footer_pillar.url %}
+            {% endif %}
+            <li><a href="{{ href | relative_url }}">{{ link.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="bottom">
+      <span>{{ site.data.site.copyright }}</span>
+      <span>{{ site.data.site.version }} — Issue {{ site.data.site.issue.number }}</span>
+    </div>
+  </div>
+</footer>

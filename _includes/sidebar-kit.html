@@ -1,0 +1,32 @@
+{% assign kit = include.kit %}
+<section class="with-side">
+  <div>
+    <h2 style="font-size: 32px; letter-spacing: -0.025em; margin-bottom: 16px;"><span style="font-family: var(--font-mono); font-size: 13px; color: var(--accent); letter-spacing: 0.06em; margin-right: 8px; font-weight: 500;">06</span>{{ kit.intro_title }}</h2>
+    <p style="font-size: 17px; line-height: 1.6; color: var(--ink-2); margin-bottom: 24px;">{{ kit.intro }}</p>
+    <p style="font-size: 17px; line-height: 1.6; color: var(--ink-2);">{{ kit.contact }}</p>
+  </div>
+  <aside class="side">
+    <h4>{{ kit.kicker }}</h4>
+    <h3>{{ kit.title }}</h3>
+    <ul>
+      {% for item_slug in kit.items %}
+        {% assign item_matches = site.items | where: "slug", item_slug %}
+        {% assign item = item_matches | first %}
+        {% if item %}
+        <li>
+          <div class="thumb"></div>
+          <div class="info">
+            <div class="n">{{ item.title }}</div>
+            <div class="p">{{ item.capacity | default: item.item_type }} · {{ item.weight }}</div>
+          </div>
+          <a class="a" href="{{ item.url | relative_url }}">{{ item.sale_price | default: item.price | default: "View" }}</a>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <div style="margin-top:18px; padding-top:16px; border-top:1px solid var(--hairline); display:flex; justify-content:space-between; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft);">
+      <span>{{ kit.total_label }}</span>
+      <span style="color: var(--ink); font-weight: 500;">{{ kit.total_value }}</span>
+    </div>
+  </aside>
+</section>

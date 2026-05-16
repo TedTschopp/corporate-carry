@@ -1,0 +1,28 @@
+{% assign table = include.table %}
+<div class="compare">
+  <div class="compare__head">
+    <h3>{{ table.title }}</h3>
+    <span class="kicker">{{ table.kicker }}</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        {% for column in table.columns %}<th>{{ column }}</th>{% endfor %}<th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in table.rows %}
+        {% assign item_matches = site.items | where: "slug", row.item %}
+        {% assign item = item_matches | first %}
+        <tr>
+          <td class="name">{{ row.name | default: item.title }}</td>
+          <td class="mono">{{ row.weight | default: item.weight }}</td>
+          <td>{{ row.best_for }}</td>
+          <td class="mono">{{ row.real_world_battery }}</td>
+          <td class="score">{{ row.score | default: item.score }}</td>
+          <td><a href="{{ item.url | relative_url }}" style="font-family:var(--font-mono); font-size:12px; color:var(--accent);">View →</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

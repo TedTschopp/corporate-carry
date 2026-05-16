@@ -1,0 +1,25 @@
+{% assign item = include.item %}
+{% if item %}
+{% assign index_number = include.index | default: 1 | plus: 0 %}
+{% assign category_spec = item.capacity | default: item.specs.power | default: item.specs.size | default: item.specs.format %}
+<article class="product">
+  <div class="product__media">
+    {% include placeholder-media.html media=item.media style="height:100%; border-radius:0; border:none;" %}
+    <span class="product__index">{% if index_number < 10 %}0{% endif %}{{ index_number }}</span>
+    {% if item.badges contains "Top pick" or item.badges contains "Carry of the week" %}<span class="product__pick">Top pick</span>{% endif %}
+  </div>
+  <div class="product__body">
+    <span class="product__cat">{{ item.item_type | capitalize }}{% if category_spec %} · {{ category_spec }}{% endif %}</span>
+    <h4 class="product__name"><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h4>
+    <p class="product__blurb">{{ item.blurb }}</p>
+    <div class="product__footer">
+      <div class="price">{% if item.sale_price %}<s>{{ item.price }}</s>{{ item.sale_price }}{% else %}{{ item.price | default: "Reference" }}{% endif %}</div>
+      {% if item.retailers %}
+      <div class="shop">
+        {% for retailer in item.retailers limit:3 %}<a href="{{ retailer.url }}">{{ retailer.name }}</a>{% unless forloop.last %}<span class="sep">·</span>{% endunless %}{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</article>
+{% endif %}

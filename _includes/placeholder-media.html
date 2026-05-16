@@ -1,0 +1,7 @@
+{% assign media = include.media %}
+{% assign label = include.label | default: media.placeholder_label | default: "media · placeholder" %}
+{% if media.image %}
+  <img src="{{ media.image | relative_url }}" alt="{{ media.alt | default: include.alt | default: label | escape }}">
+{% else %}
+  <div class="ph {{ include.class }}"{% if include.style %} style="{{ include.style }}"{% endif %}><div class="ph__label">{{ label }}</div></div>
+{% endif %}

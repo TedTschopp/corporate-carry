@@ -1,0 +1,14 @@
+{% assign kit = include.kit %}
+<article class="pick">
+  {% include placeholder-media.html media=kit.media class="pick__ph" label=kit.media.placeholder_label %}
+  <div>
+    <span class="chip chip--outline">{{ kit.role }}</span>
+    <h3 class="pick__title"><a href="{{ kit.url | relative_url }}">{{ kit.title }}</a></h3>
+    <div class="pick__by">Edited {{ kit.edited }} · {{ kit.item_count }} items · {{ kit.total_weight }}</div>
+    <ul class="pick__list">
+      {% for entry in kit.items limit:5 %}
+      <li><span>{{ entry.label }}</span><span class="n">{{ entry.weight }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+</article>

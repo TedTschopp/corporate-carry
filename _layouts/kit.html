@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<section class="cat-hero">
+  <div class="wrap">
+    {% include breadcrumb.html parent_label="Carries" parent_url="/journal.html#carries" current=page.person %}
+    <div class="cat-hero__main">
+      <div>
+        <span class="kicker kicker--accent">§ Editor carry</span>
+        <h1 style="margin-top:14px;">{{ page.person }} <span class="em">carry.</span></h1>
+        <p class="desc">{{ page.context }}</p>
+      </div>
+      <div class="cat-stats">
+        <div class="stat-row"><span class="l">Role</span><span class="v">{{ page.role }}</span></div>
+        <div class="stat-row"><span class="l">Items</span><span class="v">{{ page.item_count }}</span></div>
+        <div class="stat-row"><span class="l">Weight</span><span class="v">{{ page.total_weight }}</span></div>
+        <div class="stat-row"><span class="l">Edited</span><span class="v">{{ page.edited }}</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="picks">
+      {% include editor-carry-card.html kit=page %}
+    </div>
+  </div>
+</section>

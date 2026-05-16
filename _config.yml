@@ -1,0 +1,55 @@
+title: Corporate Carry
+description: A curated guide to the gadgets, tools, and everyday essentials that help modern office professionals work smarter, stay organized, and carry better.
+url: "https://tedtschopp.github.io"
+baseurl: "/corporate-carry"
+timezone: America/New_York
+markdown: kramdown
+permalink: /articles/:title/
+
+kramdown:
+  input: GFM
+
+collections:
+  items:
+    output: true
+    permalink: /items/:name/
+  pillars:
+    output: true
+    permalink: /categories/:name/
+  kits:
+    output: true
+    permalink: /carries/:name/
+
+defaults:
+- scope:
+    path: ""
+    type: posts
+  values:
+    layout: post
+- scope:
+    path: ""
+    type: items
+  values:
+    layout: item
+- scope:
+    path: ""
+    type: pillars
+  values:
+    layout: pillar
+- scope:
+    path: ""
+    type: kits
+  values:
+    layout: kit
+
+exclude:
+- .agents
+- .bundle
+- vendor
+- scripts
+- Gemfile
+- Gemfile.lock
+- README.md
+- product-list.md
+- selectors.txt
+- contrast_audit.py

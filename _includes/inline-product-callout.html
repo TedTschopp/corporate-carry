@@ -1,0 +1,22 @@
+{% assign callout = include.callout %}
+{% if callout %}
+  {% assign product_matches = site.items | where: "slug", callout.item %}
+  {% assign product = product_matches | first %}
+  {% if product %}
+  <article class="inline-product">
+    <span class="tag">{{ callout.tag }}</span>
+    {% include placeholder-media.html media=product.media %}
+    <div class="body">
+      <span class="cat">{{ callout.category | default: product.item_type }}</span>
+      <h4><a href="{{ product.url | relative_url }}">{{ product.title }}</a></h4>
+      <p class="blurb">{{ callout.blurb | default: product.blurb }}</p>
+      <div class="foot">
+        <span class="price">{% if product.sale_price %}{{ product.sale_price }}{% else %}{{ product.price | default: "Reference" }}{% endif %}</span>
+        <span class="shop">
+          {% for retailer in product.retailers limit:2 %}<a href="{{ retailer.url }}">{{ retailer.name }}</a>{% unless forloop.last %}<span class="sep">·</span>{% endunless %}{% endfor %}
+        </span>
+      </div>
+    </div>
+  </article>
+  {% endif %}
+{% endif %}

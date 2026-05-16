@@ -1,0 +1,102 @@
+---
+layout: default
+---
+{% assign lookup_slug = page.pillar_slug | default: page.slug %}
+{% assign pillar_matches = site.pillars | where: "slug", lookup_slug %}
+{% assign pillar = pillar_matches | first | default: page %}
+{% assign author = site.data.authors[pillar.author] %}
+{% assign words = pillar.title | split: " " %}
+{% assign last_word = words | last %}
+{% assign first_word_count = words.size | minus: 1 %}
+
+<section class="cat-hero">
+  <div class="wrap">
+    {% include breadcrumb.html parent_label="Categories" parent_url="/catalog.html" current=pillar.title %}
+    <div class="cat-hero__main">
+      <div>
+        <span class="kicker kicker--accent">§ 01 · Category</span>
+        <h1 style="margin-top:14px;">
+          {% for word in words limit:first_word_count %}{{ word }} {% endfor %}<span class="em">{{ last_word }}.</span>
+        </h1>
+        <p class="desc">{{ pillar.description }}</p>
+      </div>
+      <div class="cat-stats">
+        {% for stat in pillar.stat_rows %}
+        <div class="stat-row"><span class="l">{{ stat.label }}</span><span class="v">{{ stat.value }}</span></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="intro-band">
+  <div class="wrap">
+    <div class="intro-band__grid">
+      <div>
+        <span class="kicker">Editorial note</span>
+        {% if author %}
+        <div class="author">
+          <div class="avatar">{{ author.initials }}</div>
+          <div class="author__meta">
+            <div class="n">{{ author.name }}</div>
+            <div class="b">{{ author.role }}</div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <div>
+        {% for paragraph in pillar.editorial_note %}<p>{{ paragraph }}</p>{% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="filters">
+    {% for group in pillar.filters %}
+    <div class="filter-grp"{% unless forloop.first %} style="margin-left:8px;"{% endunless %}>
+      <span class="lbl">{{ group.label }}</span>
+      {% for option in group.options %}<button class="pill{% if forloop.first and group.label == 'Use' %} active{% endif %}">{{ option | escape }}</button>{% endfor %}
+    </div>
+    {% endfor %}
+    <div class="right">
+      <span class="lbl" style="margin-right:0;">Sort</span>
+      <div class="sort">Editor's pick first <svg class="i" viewBox="0 0 24 24" style="width:12px;height:12px;"><path d="m6 9 6 6 6-6"/></svg></div>
+    </div>
+  </div>
+</div>
+
+<section class="products-section">
+  <div class="wrap">
+    {% for tier in pillar.tier_groups %}
+      {% include tier-section.html tier=tier %}
+    {% endfor %}
+    {% if pillar.compare_table %}
+      {% include comparison-table.html table=pillar.compare_table %}
+    {% endif %}
+  </div>
+</section>
+
+<section class="related">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom: 36px;">
+      <div class="meta">
+        <span class="kicker">§ Continue</span>
+        <h2 class="h2">Next in the workday carry.</h2>
+      </div>
+    </div>
+    <div class="grid">
+      {% for related_slug in pillar.related_pillars %}
+        {% assign related_matches = site.pillars | where: "slug", related_slug %}
+        {% assign related = related_matches | first %}
+        {% if related %}
+        <a class="related-card" href="{{ related.url | relative_url }}">
+          <span class="n">{% if related.order < 10 %}0{% endif %}{{ related.order }} · {{ related.item_count }} items</span>
+          <h4>{{ related.title }}</h4>
+          <span class="arr mono">View category →</span>
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

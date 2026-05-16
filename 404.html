@@ -1,54 +1,18 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Corporate Carry | 404</title>
-  <meta name="description" content="Fallback page for the Corporate Carry static GitHub Pages build.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="site-header wrap">
-    <a class="brand" href="index.html">Corporate Carry</a>
-    <nav class="site-nav" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="catalog.html">Catalog</a>
-      <a href="journal.html">Journal</a>
-    </nav>
-  </header>
-
-  <main class="placeholder-main wrap">
-    <section class="placeholder">
-      <p class="kicker">§ 99 · Routing fallback</p>
-      <h1>Page not found. Still under construction.</h1>
-      <p>
-        The requested path does not exist yet in this static build.
-        Return to the homepage while remaining sections are assembled.
-      </p>
-      <p><a class="card-link" href="index.html">Back to home</a></p>
-    </section>
-  </main>
-
-  <footer class="site-footer wrap">
-    <p>Corporate Carry · Static fallback page.</p>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const footerText = document.querySelector('.site-footer p');
-      if (footerText) {
-        footerText.style.cursor = 'pointer';
-        footerText.addEventListener('click', () => {
-          // Assuming tweaksApp is the function to activate the tweaks menu
-          if (window.tweaksApp) {
-            window.tweaksApp.activate();
-          }
-        });
-      }
-    });
-  </script>
-</body>
-</html>
+---
+layout: default
+title: Page not found
+permalink: /404.html
+---
+<main class="cat-hero">
+  <div class="wrap">
+    {% include breadcrumb.html current="404" %}
+    <div class="cat-hero__main">
+      <div>
+        <span class="kicker kicker--accent">§ 99 · Routing fallback</span>
+        <h1 style="margin-top:14px;">Page not <span class="em">found.</span></h1>
+        <p class="desc">The requested path does not exist yet. The carry is still here; the URL just missed its train.</p>
+        <p style="margin-top:18px;"><a class="btn btn--accent" href="{{ '/' | relative_url }}">Back to home</a></p>
+      </div>
+    </div>
+  </div>
+</main>

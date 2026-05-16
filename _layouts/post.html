@@ -1,0 +1,48 @@
+---
+layout: default
+---
+{% assign author = site.data.authors[page.author] %}
+{% assign first_pillar_slug = page.pillars | first %}
+{% assign first_pillar_matches = site.pillars | where: "slug", first_pillar_slug %}
+{% assign first_pillar = first_pillar_matches | first %}
+
+<section class="art-head">
+  <div class="wrap">
+    {% include breadcrumb.html parent_label=first_pillar.title parent_url=first_pillar.url current=page.content_type %}
+    <span class="kicker kicker--accent" style="margin-bottom:16px; display:inline-block;">§ {{ page.content_type }} · Long read · {{ page.read_time }}</span>
+    <h1>{{ page.title }}</h1>
+    <p class="deck">{{ page.dek }}</p>
+    <div class="meta-row">
+      <div class="byline">
+        <div class="avatar">{{ author.initials }}</div>
+        <div>By <strong style="color:var(--ink); font-weight:500;">{{ author.name }}</strong> · {{ author.role }}</div>
+      </div>
+      <span class="sep">/</span>
+      <span>Published {{ page.date | date: "%b %-d, %Y" }}</span>
+      {% if page.updated %}<span class="sep">/</span><span>Updated {{ page.updated }}</span>{% endif %}
+      {% for bit in page.testing.metadata %}<span class="sep">/</span><span>{{ bit }}</span>{% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if page.hero %}
+<figure class="art-hero-image" style="margin-top: 32px;">
+  {% include placeholder-media.html media=page.hero label=page.hero.placeholder_label %}
+  <figcaption>
+    <span>{{ page.hero.caption_left }}</span>
+    <span>{{ page.hero.caption_right }}</span>
+  </figcaption>
+</figure>
+{% endif %}
+
+<article class="art-body">
+  <div class="art-body__main">
+    {{ content }}
+  </div>
+</article>
+
+{% if page.kit and page.kit.items %}
+  {% include sidebar-kit.html kit=page.kit %}
+{% endif %}
+
+{% include related-articles.html posts=page.related_posts %}

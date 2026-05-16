@@ -1,0 +1,51 @@
+---
+layout: default
+---
+{% assign pillars = site.pillars | sort: "order" %}
+<section class="cat-hero">
+  <div class="wrap">
+    {% include breadcrumb.html current="Catalog" %}
+    <div class="cat-hero__main">
+      <div>
+        <span class="kicker kicker--accent">§ Catalog</span>
+        <h1 style="margin-top:14px;">Full <span class="em">taxonomy.</span></h1>
+        <p class="desc">Every current pillar and canonical item record in the Corporate Carry system. Products appear here because the collections own the facts now.</p>
+      </div>
+      <div class="cat-stats">
+        <div class="stat-row"><span class="l">Pillars</span><span class="v">{{ pillars.size }}</span></div>
+        <div class="stat-row"><span class="l">Item records</span><span class="v">{{ site.items.size }}</span></div>
+        <div class="stat-row"><span class="l">Posts</span><span class="v">{{ site.posts.size }}</span></div>
+        <div class="stat-row"><span class="l">Issue</span><span class="v">{{ site.data.site.issue.number }}</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta">
+        <span class="kicker">§ 01 · Pillars</span>
+        <h2 class="h2">Browse by workday problem.</h2>
+      </div>
+    </div>
+    <div class="cats">
+      {% for pillar in pillars %}{% include category-card.html pillar=pillar %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="items" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta">
+        <span class="kicker">§ 02 · Items</span>
+        <h2 class="h2">Canonical item records.</h2>
+      </div>
+    </div>
+    <div class="products-grid">
+      {% assign sorted_items = site.items | sort: "title" %}
+      {% for item in sorted_items %}{% include product-card.html item=item index=forloop.index %}{% endfor %}
+    </div>
+  </div>
+</section>

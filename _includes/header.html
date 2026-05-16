@@ -1,0 +1,32 @@
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="logo" href="{{ '/' | relative_url }}">
+      <div class="logo-mark">CC</div>
+      <span>Corporate Carry</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      {% for entry in site.data.navigation.header %}
+        {% assign href = entry.url %}
+        {% if entry.pillar %}
+          {% assign nav_matches = site.pillars | where: "slug", entry.pillar %}
+          {% assign nav_pillar = nav_matches | first %}
+          {% assign href = nav_pillar.url %}
+        {% endif %}
+        {% assign active = false %}
+        {% if page.nav_key == entry.key %}{% assign active = true %}{% endif %}
+        {% if entry.pillar %}
+          {% if page.slug == entry.pillar %}{% assign active = true %}{% endif %}
+          {% if page.pillar_slug == entry.pillar %}{% assign active = true %}{% endif %}
+          {% if page.pillars contains entry.pillar %}{% assign active = true %}{% endif %}
+        {% endif %}
+        <a href="{{ href | relative_url }}"{% if active %} class="active"{% endif %}>{{ entry.label }}</a>
+      {% endfor %}
+    </nav>
+    <div class="utility">
+      <button class="iconbtn" aria-label="Search">
+        <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <a href="{{ '/#sub' | relative_url }}" class="btn btn--sm btn--ghost" style="border-color:var(--hairline)">Subscribe</a>
+    </div>
+  </div>
+</header>

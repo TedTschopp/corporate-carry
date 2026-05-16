@@ -1,0 +1,50 @@
+companies:
+- real: Amazon
+  fake: Meridian Market
+- real: Anker
+  fake: Voltforge
+- real: Apple
+  fake: Orbital
+- real: Sony
+  fake: Auralith
+- real: Bellroy
+  fake: Northline Atelier
+- real: Best Buy
+  fake: Signal Depot
+- real: Huckberry
+  fake: Granite & Pine
+- real: B&H
+  fake: Lens & Lantern
+- real: Goulet
+  fake: Paperwright
+- real: Nimble
+  fake: Threadline
+- real: Roost
+  fake: Perchform
+- real: Lamy
+  fake: Rellan
+- real: Blunt
+  fake: Stratus Forge
+- real: Muji
+  fake: Mori Standard
+- real: Tom Bihn
+  fake: Tern Bexley
+product_lines:
+- real: MacBook
+  fake: Orbital Slatebook
+- real: AirPods
+  fake: Orbital Cloudbuds
+- real: AirTag
+  fake: Orbital TraceDot
+- real: Notion
+  fake: Gridbook
+- real: Remarkable Paper
+  fake: Inkplane Tablet
+- real: Leuchtturm1917
+  fake: Northlamp 1917
+- real: Leuchtturm
+  fake: Northlamp
+- real: Field Notes
+  fake: Ledgerline
+- real: Aer Day Sling 3
+  fake: Aris Day Sling 3

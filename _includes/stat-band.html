@@ -1,0 +1,11 @@
+{% assign stats = include.stats %}
+{% if stats %}
+<div class="stat-band">
+  {% for stat in stats %}
+  <div class="item">
+    <div class="n">{{ stat.value }}{% if stat.unit %}<span class="u">{{ stat.unit }}</span>{% endif %}</div>
+    <div class="l">{{ stat.label }}</div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

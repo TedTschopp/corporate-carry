@@ -1,0 +1,17 @@
+{% assign box = include.box %}
+{% if box %}
+<div class="box">
+  <h4>{{ box.title }}</h4>
+  <ul>
+    {% for row in box.rows %}
+    <li>
+      <span class="n">{{ row.code }}</span>
+      <span>
+        <span class="what">{{ row.what }}</span>
+        <span class="why">{{ row.why }}</span>
+      </span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

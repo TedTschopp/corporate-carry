@@ -1,0 +1,15 @@
+{% assign post = include.post %}
+{% assign pillar_slug = post.pillars | first %}
+{% assign pillar_matches = site.pillars | where: "slug", pillar_slug %}
+{% assign pillar = pillar_matches | first %}
+<a class="article-card{% if include.featured %} feat{% endif %}" href="{{ post.url | relative_url }}">
+  {% include placeholder-media.html media=post.hero label=post.hero.placeholder_label %}
+  <div class="meta-row">
+    {% if include.featured %}<span class="chip chip--accent"><span class="dot"></span> {{ post.content_type }}</span>{% else %}<span>{{ post.content_type }}</span>{% endif %}
+    {% if pillar %}<span>{{ pillar.short_label | default: pillar.title }}</span>{% endif %}
+    <span>·</span>
+    <span>{{ post.read_time }}</span>
+  </div>
+  <h3>{{ post.title }}</h3>
+  <p>{{ post.dek }}</p>
+</a>

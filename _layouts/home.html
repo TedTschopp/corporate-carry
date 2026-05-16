@@ -1,0 +1,122 @@
+---
+layout: default
+---
+{% assign homepage = site.data.site.homepage %}
+{% assign pillars = site.pillars | sort: "order" %}
+{% assign feature_matches = site.items | where: "slug", homepage.hero.featured_item %}
+{% assign feature_item = feature_matches | first %}
+{% assign backpack_matches = site.pillars | where: "slug", "backpack-essentials" %}
+{% assign backpack = backpack_matches | first %}
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__top">
+      <div>{{ site.data.site.issue.label }} — {{ site.data.site.issue.quarter }}</div>
+      <div class="nums">
+        <span>{{ homepage.curated_count }} items curated</span>
+        <span>•</span>
+        <span>{{ homepage.sponsorship_claim }}</span>
+      </div>
+    </div>
+    <div class="hero__main">
+      <div>
+        <h1>
+          {{ homepage.hero.headline_prefix }}<br>
+          for the <span class="em" data-tagline-em>{{ homepage.hero.emphasis }}</span><br>
+          {{ homepage.hero.headline_suffix }}
+        </h1>
+        <p class="hero__lede" data-tagline-sub>{{ homepage.hero.lede }}</p>
+        <div class="hero__cta">
+          <a class="btn btn--accent" href="{{ backpack.url | relative_url }}">
+            Browse the carry
+            <svg class="i arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#latest" style="border-color:var(--hairline)">This week's picks</a>
+        </div>
+      </div>
+      {% if feature_item %}
+      <aside class="hero__featured" aria-label="Carry of the week">
+        {% include placeholder-media.html media=feature_item.media class="ph--accent" style="aspect-ratio: 5/4;" label=homepage.hero.featured_label %}
+        <div class="meta">
+          <div class="row1">
+            <span>★ Carry of the Week</span>
+            <span>{{ site.data.site.issue.week }}</span>
+          </div>
+          <h3><a href="{{ feature_item.url | relative_url }}">{{ feature_item.title }}</a></h3>
+          <p>{{ feature_item.blurb }}</p>
+          <div class="specs">
+            <div class="spec"><span>Capacity</span><span>{{ feature_item.capacity }}</span></div>
+            <div class="spec"><span>Weight</span><span>{{ feature_item.weight }}</span></div>
+            <div class="spec"><span>Verdict</span><span>{{ feature_item.score }}/10</span></div>
+          </div>
+        </div>
+      </aside>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true">
+  <div class="strip__inner">
+    {% for repeat in (1..2) %}
+      {% for pillar in pillars %}
+      <span><span class="dot"></span> {{ pillar.marquee_label }}</span>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta">
+        <span class="kicker">§ 01 · Categories</span>
+        <h2 class="h2">{{ homepage.categories_heading }}</h2>
+      </div>
+      <a href="{{ '/catalog.html' | relative_url }}" class="link">View full taxonomy <span>↗</span></a>
+    </div>
+    <div class="cats">
+      {% for pillar in pillars %}
+        {% include category-card.html pillar=pillar %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="latest" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta">
+        <span class="kicker">§ 02 · Latest roundups</span>
+        <h2 class="h2">{{ homepage.latest_heading }}</h2>
+      </div>
+      <a href="{{ '/journal.html' | relative_url }}" class="link">All articles <span>↗</span></a>
+    </div>
+    <div class="articles">
+      {% assign featured_posts = site.posts | where: "featured_home", true | sort: "home_order" %}
+      {% for post in featured_posts limit:3 %}
+        {% include article-card.html post=post featured=post.home_featured %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="carries" style="background: var(--surface); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta">
+        <span class="kicker">§ 03 · What's in their bag</span>
+        <h2 class="h2">{{ homepage.carries_heading }}</h2>
+      </div>
+      <a href="{{ '/journal.html#carries' | relative_url }}" class="link">All carries <span>↗</span></a>
+    </div>
+    <div class="picks">
+      {% assign home_kits = site.kits | where: "featured_home", true %}
+      {% for kit in home_kits %}
+        {% include editor-carry-card.html kit=kit %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include newsletter.html %}

@@ -1,0 +1,62 @@
+header:
+- label: Home
+  url: /
+  key: home
+- label: Backpack
+  pillar: backpack-essentials
+  key: backpack
+- label: Desk
+  pillar: desk-office-upgrades
+  key: desk
+- label: Travel
+  pillar: business-travel-kit
+  key: travel
+- label: Meetings
+  pillar: meeting-presentation
+  key: meetings
+- label: Gift guides
+  pillar: gift-guides
+  key: gifts
+footer_groups:
+- title: Categories
+  links:
+  - label: Backpack essentials
+    pillar: backpack-essentials
+  - label: Desk & office upgrades
+    pillar: desk-office-upgrades
+  - label: Time-saving tools
+    pillar: time-saving-tools
+  - label: Meeting & presentation
+    pillar: meeting-presentation
+  - label: Notebook & paper systems
+    pillar: notebook-paper-systems
+  - label: Pen & pencil
+    pillar: pen-pencil
+  - label: Business travel kit
+    pillar: business-travel-kit
+  - label: Gift guides
+    pillar: gift-guides
+- title: Editorial
+  links:
+  - label: How we review
+    url: /journal.html#methodology
+  - label: Editor's carries
+    url: /#carries
+  - label: The Friday Carry
+    url: /#sub
+  - label: Methodology
+    url: /journal.html#methodology
+  - label: Reader submissions
+    url: /journal.html#submissions
+- title: About
+  links:
+  - label: Manifesto
+    url: /journal.html#manifesto
+  - label: Independence
+    url: /journal.html#independence
+  - label: Contact
+    url: /journal.html#contact
+  - label: Privacy
+    url: /journal.html#privacy
+  - label: Terms
+    url: /journal.html#terms

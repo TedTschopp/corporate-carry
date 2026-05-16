@@ -1,0 +1,17 @@
+{% assign tier = include.tier %}
+<div class="tier">
+  <div class="tier__head">
+    <span class="badge{% if tier.badge_style == 'accent' %} accent{% endif %}">{{ tier.badge }}</span>
+    <h2>{{ tier.title }}</h2>
+    <span class="count">{{ tier.count_label }}</span>
+  </div>
+  <p class="tier__intro">{{ tier.intro }}</p>
+  <div class="products-grid">
+    {% for item_slug in tier.items %}
+      {% assign item_matches = site.items | where: "slug", item_slug %}
+      {% assign item = item_matches | first %}
+      {% assign card_index = tier.index_start | plus: forloop.index0 %}
+      {% include product-card.html item=item index=card_index %}
+    {% endfor %}
+  </div>
+</div>

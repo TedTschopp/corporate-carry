@@ -1,0 +1,18 @@
+name: The Friday Carry
+kicker: "§ 04 · The Friday Carry"
+headline: "One useful thing.<br>Every Friday."
+description: A short note from the editors with the single best item we touched this week, why it matters, and where to get it. No tracking links, no 25-item lists.
+placeholder: you@company.com
+button_label: Subscribe
+subscribed_label: Subscribed
+perks:
+- 12,400 readers
+- Unsubscribe in one click
+- Never sold, never shared
+stats:
+- value: "312"
+  label: Items in active rotation
+- value: "1,847"
+  label: Items tested & rejected
+- value: "0"
+  label: Sponsored placements, ever

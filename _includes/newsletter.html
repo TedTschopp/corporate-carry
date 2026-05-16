@@ -1,0 +1,26 @@
+<section class="section" id="sub">
+  <div class="wrap">
+    <div class="sub">
+      <div style="position:relative; z-index:1;">
+        <span class="kicker" style="color: color-mix(in srgb, var(--bg) 55%, transparent);">{{ site.data.newsletter.kicker }}</span>
+        <h2 style="margin-top:12px;">{{ site.data.newsletter.headline }}</h2>
+        <p>{{ site.data.newsletter.description }}</p>
+        <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='{{ site.data.newsletter.subscribed_label }}';">
+          <input type="email" placeholder="{{ site.data.newsletter.placeholder }}" required>
+          <button type="submit">{{ site.data.newsletter.button_label }}</button>
+        </form>
+        <div class="perks">
+          {% for perk in site.data.newsletter.perks %}<div><span class="dot"></span> {{ perk }}</div>{% endfor %}
+        </div>
+      </div>
+      <div class="stat-stack">
+        {% for stat in site.data.newsletter.stats %}
+        <div class="stat">
+          <div class="n">{{ stat.value }}</div>
+          <div class="l">{{ stat.label }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

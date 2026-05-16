@@ -1,0 +1,11 @@
+<div class="breadcrumb">
+  <a href="{{ '/' | relative_url }}">Corporate Carry</a>
+  {% if include.parent_label %}
+    <span class="sep">/</span>
+    <a href="{{ include.parent_url | relative_url }}">{{ include.parent_label }}</a>
+  {% endif %}
+  {% if include.current %}
+    <span class="sep">/</span>
+    <span style="color:var(--ink);">{{ include.current }}</span>
+  {% endif %}
+</div>
